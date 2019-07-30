@@ -1,20 +1,23 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const router = express.Router();
+const express = require('express')
+const { todoModel } = require('../models/todoModel')
+const router = express.Router()
 
 // Get all todos
-router.get('/', async (res, req) => {
-  const todos = await todoModel.find({});
-  res.send(todos);
+router.get('/', (req, res) => {
+  todoModel.find({}, (err, todos) => {
+    res.send(todos)
+  })
 })
 
 // Creating new todo
-router.post('/', async (res, req) => {
+router.post('/', async (req, res) => {
   let todo = new todoModel({
     description: req.body.description,
-    isDone: req.body.isDone,
+    isDone: req.body.isDone
   })
 
-  todo = await todo.save();
-  res.send(todo);
+  todo = await todo.save()
+  res.send(todo)
 })
+
+module.exports = router
