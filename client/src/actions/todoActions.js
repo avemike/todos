@@ -4,7 +4,7 @@ import {
 } from './types'
 
 export const fetchTodos = () => dispatch => {
-  fetch('https://jsonplaceholder.typicode.com/posts')
+  fetch('http://localhost:5000/api/todos')
     .then(res => res.json())
     .then(todos => dispatch({
       type: FETCH_TODOS,
