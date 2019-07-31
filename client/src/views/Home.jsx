@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { fetchTodos } from '../actions/todoActions';
+import TodoForm from '../components/TodoForm';
 
 class Home extends Component {
   componentWillMount() {
@@ -10,9 +11,17 @@ class Home extends Component {
   }
   
   render() {
+    const Todos = this.props.todos.map(todo => (
+      <div>
+        <p>
+          {todo.description}
+        </p>
+      </div>
+    ))
     return (
       <div>
-        <h1>xd</h1>
+        <TodoForm />
+        { Todos }
       </div>
     )
   }

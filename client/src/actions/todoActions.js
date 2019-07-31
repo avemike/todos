@@ -13,7 +13,7 @@ export const fetchTodos = () => dispatch => {
 };
 
 export const createTodo = todoData => dispatch => {
-  fetch('https://jsonplaceholder.typicode.com/posts', {
+  fetch('http://localhost:5000/api/todos', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
