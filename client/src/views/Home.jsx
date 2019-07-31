@@ -5,11 +5,16 @@ import PropTypes from 'prop-types'
 import { fetchTodos } from '../actions/todoActions';
 import TodoForm from '../components/TodoForm';
 
-class Home extends Component {
+class Home extends Component {  
   componentWillMount() {
     this.props.fetchTodos()
   }
   
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.newTodo) {
+      this.props.todos.unshift(nextProps.newTodo)
+    }
+  }
   render() {
     const Todos = this.props.todos.map(todo => (
       <div>
