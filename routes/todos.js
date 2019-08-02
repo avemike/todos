@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
   })
 })
 
-// Creating new todo
+// Create todo
 router.post('/', async (req, res) => {
   let todo = new todoModel({
     description: req.body.description,
@@ -18,6 +18,16 @@ router.post('/', async (req, res) => {
 
   todo = await todo.save()
   res.send(todo)
+})
+
+// Update todo
+router.put('/:id', async (req, res) => {
+  todoModel.findOneAndUpdate({
+    _id: req.params.id
+  }, req.body, (err, todo) => {
+    if(err) res.send(err)
+    res.json(todo)
+  })
 })
 
 module.exports = router
