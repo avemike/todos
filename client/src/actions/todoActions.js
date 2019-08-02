@@ -36,8 +36,8 @@ export const deleteTodo = _id => dispatch => {
       },
     })
     .then(res => res.json())
-    .then(todo => dispatch({
+    .then(message => dispatch({
       type: DELETE_TODO,
-      payload: todo
+      payload: {message, _id}
     }))
 }

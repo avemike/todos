@@ -10,11 +10,12 @@ class Home extends Component {
   componentWillMount() {
     this.props.fetchTodos()
   }
-  
+
   componentWillReceiveProps(nextProps) {
     if(nextProps.newTodo) {
       this.props.todos.unshift(nextProps.newTodo)
     }
+    console.log(nextProps)
   }
   render() {
     const Todos = this.props.todos.map((todo, i) => (

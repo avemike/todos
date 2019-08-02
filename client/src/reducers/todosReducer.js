@@ -1,6 +1,7 @@
 import {
   FETCH_TODOS,
-  NEW_TODO
+  NEW_TODO,
+  DELETE_TODO
 } from '../actions/types'
 
 const initialState = {
@@ -20,7 +21,13 @@ export default function (state = initialState, action) {
           ...state,
           item: action.payload
         }
-        default:
-          return state
+      case DELETE_TODO:
+        const items = state.items.filter(item => item._id !== action.payload._id)
+        return {
+          ...state,
+          items
+        }
+      default:
+        return state
   }
 }
