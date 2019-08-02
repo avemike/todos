@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { fetchTodos } from '../actions/todoActions';
 import TodoForm from '../components/TodoForm';
+import Todo from '../components/Todo';
 
 class Home extends Component {  
   componentWillMount() {
@@ -16,12 +17,8 @@ class Home extends Component {
     }
   }
   render() {
-    const Todos = this.props.todos.map(todo => (
-      <div>
-        <p>
-          {todo.description}
-        </p>
-      </div>
+    const Todos = this.props.todos.map((todo, i) => (
+      <Todo description={todo.description} _id={todo._id} key={i}/>
     ))
     return (
       <div>

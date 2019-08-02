@@ -1,6 +1,7 @@
 import {
   FETCH_TODOS,
-  NEW_TODO
+  NEW_TODO,
+  DELETE_TODO
 } from './types'
 
 export const fetchTodos = () => dispatch => {
@@ -9,8 +10,8 @@ export const fetchTodos = () => dispatch => {
     .then(todos => dispatch({
       type: FETCH_TODOS,
       payload: todos
-    }));
-};
+    }))
+}
 
 export const createTodo = todoData => dispatch => {
   fetch('http://localhost:5000/api/todos', {
@@ -25,4 +26,18 @@ export const createTodo = todoData => dispatch => {
       type: NEW_TODO,
       payload: todo
     }))
-};
+}
+
+export const deleteTodo = _id => dispatch => {
+  fetch(`http://localhost:5000/api/todos/${_id}`, {
+      method: 'DELETE',
+      headers: {
+        'content-type': 'application/json'
+      },
+    })
+    .then(res => res.json())
+    .then(todo => dispatch({
+      type: DELETE_TODO,
+      payload: todo
+    }))
+}
