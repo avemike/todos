@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { deleteTodo } from '../actions/todoActions'
 
@@ -15,12 +14,12 @@ class Todo extends Component {
 
   render() {
     return (
-      <div>
+      <li>
         <p>
           {this.props.description}
           <button onClick={this.handleClick}>X</button>
         </p>    
-      </div>
+      </li>
     )
   }
 }

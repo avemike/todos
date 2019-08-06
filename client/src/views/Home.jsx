@@ -22,9 +22,14 @@ class Home extends Component {
       <Todo description={todo.description} _id={todo._id} key={i}/>
     ))
     return (
-      <div>
-        <TodoForm />
-        { Todos }
+      <div className="App">
+      <h1>todos</h1>
+        <div className="todosContainer">
+          <TodoForm />
+          <ul>
+            { Todos }
+          </ul>
+        </div>
       </div>
     )
   }
