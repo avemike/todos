@@ -15,10 +15,11 @@ class Todo extends Component {
   render() {
     return (
       <li>
+        <button className='check'></button>
         <p>
           {this.props.description}
-          <button onClick={this.handleClick}>X</button>
         </p>    
+        <div className='settings' onClick={this.handleClick}>...</div>
       </li>
     )
   }

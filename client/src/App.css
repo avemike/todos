@@ -33,11 +33,31 @@ ul {
   padding: 0;
 }
 li {
-  padding: 8px 3em;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+li + li {
+  border-top: 2px solid rgba(0,0,0, 0.3);
 }
 p {
-  margin: 0;
+  margin: 8px 3em;
+  display: inline;
+  text-align: left;
   font-size: 1.5em;
+}
+.settings {
+  font-size: 2em;
+  margin: 8px;
+  transform: translateY(-0.3em);
+}
+button.check {
+  width: 2em;
+  height: 2em;
+  margin: 8px;
+  background: transparent;
+  border: 1px solid rgba(0,0,0, 0.3);
 }
 form {
   width: 100%;
