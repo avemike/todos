@@ -23,6 +23,7 @@ class Todo extends Component {
     if(props.todo !== state.todo) {
       return {todo: props.todo}
     }
+    else return state
   }
   render() {
     return (

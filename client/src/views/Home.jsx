@@ -11,13 +11,8 @@ class Home extends Component {
     this.props.fetchTodos()
   }
 
-  componentWillReceiveProps(nextProps) {
-    if(nextProps.newTodo) {
-      this.props.todos.unshift(nextProps.newTodo)
-    }
-  }
   render() {
-    const Todos = this.props.todos.map((todo, i) => (
+    const Todos = this.props.todos.reverse().map((todo, i) => (
       <Todo todo={todo} key={i}/>
     ))
     return (
@@ -36,11 +31,9 @@ class Home extends Component {
 Home.propTypes = {
   fetchTodos: PropTypes.func.isRequired,
   todos: PropTypes.array.isRequired,
-  newTodo: PropTypes.object
 }
 const mapStateToProps = state => ({
   todos: state.todos.items,
-  newTodo: state.todos.item,
 })
 
 export default connect(mapStateToProps, { fetchTodos })(Home)
