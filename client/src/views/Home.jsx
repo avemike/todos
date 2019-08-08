@@ -12,7 +12,7 @@ class Home extends Component {
   }
 
   render() {
-    const Todos = this.props.todos.reverse().map((todo, i) => (
+    const Todos = this.props.todos.map((todo, i) => (
       <Todo todo={todo} key={i}/>
     ))
     return (
