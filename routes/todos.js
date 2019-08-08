@@ -22,11 +22,12 @@ router.post('/', async (req, res) => {
 
 // Update todo
 router.put('/:id', async (req, res) => {
-  todoModel.findOneAndUpdate({
-    _id: req.params.id
-  }, req.body, (err, todo) => {
+  todoModel.findByIdAndUpdate(req.params.id, req.body, {}, (err, todo) => {
     if(err) res.send(err)
-    res.json(todo)
+    console.log(Object.assign({}, todo._doc, {
+      isDone: req.body.isDone
+    }))
+    res.json(Object.assign({}, todo._doc, {isDone: req.body.isDone}))
   })
 })
 

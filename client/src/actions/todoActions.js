@@ -15,7 +15,6 @@ export const fetchTodos = () => dispatch => {
 }
 
 export const updateTodo = todoData => dispatch => {
-  console.log(todoData)
   fetch(`http://localhost:5000/api/todos/${todoData._id}`, {
       method: 'PUT',
       headers: {
@@ -24,10 +23,11 @@ export const updateTodo = todoData => dispatch => {
       body: JSON.stringify(todoData)
     })
     .then(res => res.json())
-    .then(todo => dispatch({
-      type: UPDATE_TODO,
-      payload: todo
-    }))
+    .then(todo => {
+      dispatch({
+        type: UPDATE_TODO,
+        payload: todo
+    })})
 }
 
 export const createTodo = todoData => dispatch => {

@@ -11,17 +11,17 @@ class CheckBox extends Component {
   handleClick() {
     this.props.updateTodo({
       _id: this.props._id,
-      isDone: !this.props.isDone}
-    )
+      isDone: !this.props.isDone
+    })
   }
   render() {
-      return (
-        <input
-          type = 'checkbox'
-          className = 'check'
-          checked = {this.props.isDone}
-          onChange = {this.handleClick.bind(this)}/> 
-      )
+    return (
+      <input
+        type = 'checkbox'
+        className = 'check'
+        checked = {this.props.isDone}
+        onChange = {this.handleClick}/> 
+    )
   }
 }
 
