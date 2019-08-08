@@ -1,3 +1,9 @@
+:root {
+  --main-bg-color: #E08DAC;
+  --main-green: #45CB85;
+  --main-black: #153131;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
@@ -7,7 +13,7 @@ h1 {
   margin: 0;
   padding-top: 6%;
   font-size: 4em;
-  color: #404040;
+  color: var(--main-black);
 }
 #root {
   height: 100%;
@@ -20,13 +26,13 @@ h1 {
   min-height: 100vh;
   height: 100%;
   width: 100%;
-  background-color: #c899f7;
+  background-color: var(--main-bg-color);
 }
 .todosContainer {
   display: inline-block;
-  background-color: rgba(255, 255, 255, 0.8);
-  box-shadow: 0 0 20px -12px black;
-  border-top: 8px solid #404040;
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 0 0 20px -12px var(--main-black);
+  border-top: 8px solid var(--main-black);
   min-width: 40vw;
 }
 ul {
@@ -39,6 +45,7 @@ li {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: 
 }
 li + li {
   border-top: 2px solid rgba(0,0,0, 0.3);
@@ -58,22 +65,23 @@ input.check {
   width: 2em;
   height: 2em;
   margin: 8px;
-  background: transparent;
-  border: 1px solid rgba(0,0,0, 0.3);
 }
 form {
   width: 100%;
 }
-input {
+input[name='description'] {
   border: none;
   width: calc(100% - 3.5rem);
-  height: 3.5rem;
-  font-size: 1.4em;
+  height: 3rem;
+  font-size: 2rem;
+  outline: none;
 }
 button.add {
   font-size: 1.4em;
   width: 3.5rem;
   height: 3.5rem;
-  background-color: transparent;
+  background-color: var(--main-green);
+  color: white;
   border: none;
+  display: none;
 }
