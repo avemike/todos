@@ -7,7 +7,7 @@ h1 {
   margin: 0;
   padding-top: 6%;
   font-size: 4em;
-  
+  color: #404040;
 }
 #root {
   height: 100%;
@@ -26,7 +26,7 @@ h1 {
   display: inline-block;
   background-color: rgba(255, 255, 255, 0.8);
   box-shadow: 0 0 20px -12px black;
-  border-top: 6px solid black;
+  border-top: 8px solid #404040;
 }
 ul {
   list-style: none;
@@ -52,7 +52,7 @@ p {
   margin: 8px;
   transform: translateY(-0.3em);
 }
-button.check {
+input.check {
   width: 2em;
   height: 2em;
   margin: 8px;
@@ -63,6 +63,7 @@ form {
   width: 100%;
 }
 input {
+  border: none;
   width: calc(100% - 3.5rem);
   height: 3.5rem;
   font-size: 1.4em;

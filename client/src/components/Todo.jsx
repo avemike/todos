@@ -1,28 +1,32 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { deleteTodo } from '../actions/todoActions'
+import { updateTodo, deleteTodo } from '../actions/todoActions'
+import CheckBox from './CheckBox';
 
 class Todo extends Component {
   constructor() {
     super()
-    this.handleClick = this.handleClick.bind(this)
   }
 
-  handleClick() {
-    this.props.deleteTodo(this.props._id)
+  handleUpdate() {
+    this.props.updateTodo(
+      Object.assign({}, this.props.todo, { isDone: !this.props.todo.isDone})
+    );
   }
-
+  handleDelete() {
+    this.props.deleteTodo(this.props.todo._id)
+  }
   render() {
     return (
       <li>
-        <button className='check'></button>
+        <CheckBox _id={this.props.todo._id} isDone={this.props.todo.isDone}/>
         <p>
-          {this.props.description}
+          {this.props.todo.description}
         </p>    
-        <div className='settings' onClick={this.handleClick}>...</div>
+        <div className='settings' onClick={this.handleDelete.bind(this)}>...</div>
       </li>
     )
   }
 }
 
-export default connect(null, { deleteTodo })(Todo)
+export default connect(null, { updateTodo, deleteTodo })(Todo)

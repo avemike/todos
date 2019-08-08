@@ -1,7 +1,8 @@
 import {
   FETCH_TODOS,
   NEW_TODO,
-  DELETE_TODO
+  DELETE_TODO,
+  UPDATE_TODO
 } from './types'
 
 export const fetchTodos = () => dispatch => {
@@ -10,6 +11,22 @@ export const fetchTodos = () => dispatch => {
     .then(todos => dispatch({
       type: FETCH_TODOS,
       payload: todos
+    }))
+}
+
+export const updateTodo = todoData => dispatch => {
+  console.log(todoData)
+  fetch(`http://localhost:5000/api/todos/${todoData._id}`, {
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(todoData)
+    })
+    .then(res => res.json())
+    .then(todo => dispatch({
+      type: UPDATE_TODO,
+      payload: todo
     }))
 }
 

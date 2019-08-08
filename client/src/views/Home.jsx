@@ -15,11 +15,10 @@ class Home extends Component {
     if(nextProps.newTodo) {
       this.props.todos.unshift(nextProps.newTodo)
     }
-    console.log(nextProps)
   }
   render() {
     const Todos = this.props.todos.map((todo, i) => (
-      <Todo description={todo.description} _id={todo._id} key={i}/>
+      <Todo todo={todo} key={i}/>
     ))
     return (
       <div className="App">
@@ -41,7 +40,7 @@ Home.propTypes = {
 }
 const mapStateToProps = state => ({
   todos: state.todos.items,
-  newTodo: state.todos.item
+  newTodo: state.todos.item,
 })
 
 export default connect(mapStateToProps, { fetchTodos })(Home)

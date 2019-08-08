@@ -1,7 +1,8 @@
 import {
   FETCH_TODOS,
   NEW_TODO,
-  DELETE_TODO
+  DELETE_TODO,
+  UPDATE_TODO
 } from '../actions/types'
 
 const initialState = {
@@ -26,6 +27,18 @@ export default function (state = initialState, action) {
         return {
           ...state,
           items
+        }
+      case UPDATE_TODO:
+        const newItems = [];
+        state.items.forEach( item => {
+          if(item._id === action.payload._id) {
+            newItems.push(action.payload)
+          }
+          else newItems.push(item)
+        })
+        return {
+          ...state,
+          items: newItems 
         }
       default:
         return state
