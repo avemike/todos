@@ -1,27 +1,25 @@
 import React, { Component } from 'react'
 
 export default class TodoSettings extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
-      show: false
+      show: props.show
     }
   }
-  handleClick() {
-    this.setState({show: !this.state.show})
-  }
   render() {
-    return (
-      <div>
-        <div className='settings' onClick={this.handleClick.bind(this)}>...</div>
-        {this.state.show? <div className='settings-field'>
+    if(this.props.show) {
+      return (
+        <div className='settings-field'>
           <ul>
             <li>Usuń</li>
             <li>Przenieś</li>
           </ul>
-        </div> : null}
-      </div>
-
-    )
+        </div>
+      )
+    } 
+    else {
+      return null
+    }
   }
 }

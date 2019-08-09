@@ -45,6 +45,12 @@ h1 {
 }
 .todosContainer>ul>li {
   position: relative;
+  /* display: flex;
+  justify-content: space-between;
+  align-items: center; */
+}
+.todosContainer>ul>li>.first-line {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -88,15 +94,16 @@ button.add {
   display: none;
 }
 .settings-field {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  transform: translateX(100%);
-  width: 200px;
+  width: 100%;
   height: 120px;
   background: blue;
 }
 .settings-field>ul {
+  height: 100%;
+  padding: 0;
+  list-style: none;
   display: flex;
-  flex-flow: column wrap;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
