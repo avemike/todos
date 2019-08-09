@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { fetchTodos } from '../actions/todoActions';
@@ -12,8 +11,8 @@ class Home extends Component {
   }
 
   render() {
-    const Todos = this.props.todos.map((todo, i) => (
-      <Todo todo={todo} key={i}/>
+    const Todos = this.props.todos.map(todo => (
+      <Todo todo={todo} key={todo._id}/>
     ))
     return (
       <div className="App">

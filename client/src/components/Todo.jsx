@@ -29,7 +29,7 @@ class Todo extends Component {
           </p>
           <div className='settings' onClick={this.handleClick.bind(this)}>...</div>
         </div>
-        <TodoSettings show={this.state.showSettings}/>
+        <TodoSettings show={this.state.showSettings} _id={this.props.todo._id}/>
       </li>
     )
   }
