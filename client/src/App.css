@@ -100,7 +100,7 @@ button.add {
   height: 120px;
   background: blue;
 
-  transition: 0.6s height, 0.3s color ease-in;
+  transition: 0.6s height, 0.3s color ease-in, 0.6s opacity;
 }
 .settings-field>ul {
   height: 100%;
@@ -114,6 +114,7 @@ button.add {
 .settings-field--hide {
   height: 0;
   color: transparent;
+  opacity: 0;
 }
 .settings-field--expand {
   height: 120px;
