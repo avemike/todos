@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { updateTodo, deleteTodo } from '../actions/todoActions'
-import CheckBox from './CheckBox';
+import CheckBox from './CheckBox'
+import TodoSettings from './TodoSettings'
 
 class Todo extends Component {
   handleDelete() {
@@ -13,8 +14,8 @@ class Todo extends Component {
         <CheckBox _id={this.props.todo._id} isDone={this.props.todo.isDone}/>
         <p>
           {this.props.todo.description}
-        </p>    
-        <div className='settings' onClick={this.handleDelete.bind(this)}>...</div>
+        </p>
+        <TodoSettings/>
       </li>
     )
   }

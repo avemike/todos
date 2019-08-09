@@ -2,6 +2,9 @@
   --main-bg-color: #E08DAC;
   --main-green: #45CB85;
   --main-black: #153131;
+
+  --settings-x: 0px;
+  --settings-y: 0px;
 }
 
 body {
@@ -35,19 +38,18 @@ h1 {
   border-top: 8px solid var(--main-black);
   min-width: 40vw;
 }
-ul {
+.todosContainer>ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-li {
+.todosContainer>ul>li {
   position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: 
 }
-li + li {
+.todosContainer>ul>li+li {
   border-top: 2px solid rgba(0,0,0, 0.3);
 }
 p {
@@ -84,4 +86,17 @@ button.add {
   color: white;
   border: none;
   display: none;
+}
+.settings-field {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  transform: translateX(100%);
+  width: 200px;
+  height: 120px;
+  background: blue;
+}
+.settings-field>ul {
+  display: flex;
+  flex-flow: column wrap;
 }
