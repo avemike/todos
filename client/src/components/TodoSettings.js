@@ -10,7 +10,7 @@ export default class TodoSettings extends Component {
   render() {
     if(this.props.show) {
       return (
-        <div className='settings-field'>
+        <div className='settings-field settings-field--expand'>
           <ul>
             <li>Usuń</li>
             <li>Przenieś</li>
@@ -19,7 +19,14 @@ export default class TodoSettings extends Component {
       )
     } 
     else {
-      return null
+      return (
+        <div className='settings-field settings-field--hide'>
+          <ul>
+            <li>Usuń</li>
+            <li>Przenieś</li>
+          </ul>
+        </div>
+      )
     }
   }
 }
