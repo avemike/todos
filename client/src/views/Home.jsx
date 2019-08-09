@@ -11,16 +11,24 @@ class Home extends Component {
   }
 
   render() {
-    const Todos = this.props.todos.map(todo => (
-      <Todo todo={todo} key={todo._id}/>
-    ))
+    const completed = []
+    const notCompleted = []
+    this.props.todos.forEach(todo => {
+      if(todo.isDone) completed.push(<Todo todo={todo} key={todo._id}/>)
+      else notCompleted.push(<Todo todo={todo} key={todo._id}/>)
+    })
     return (
       <div className="App">
       <h1>todos</h1>
         <div className="todosContainer">
           <TodoForm />
+          <h2>New</h2>
           <ul>
-            { Todos }
+            { notCompleted }
+          </ul>
+          <h2>Complete</h2>
+          <ul>
+            { completed }
           </ul>
         </div>
       </div>
