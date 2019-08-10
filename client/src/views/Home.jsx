@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { fetchTodos } from '../actions/todoActions';
 import TodoForm from '../components/TodoForm';
 import Todo from '../components/Todo';
+import Header from '../components/Header';
 
 class Home extends Component {  
   componentWillMount() {
@@ -19,6 +20,7 @@ class Home extends Component {
     })
     return (
       <div className="App">
+      <Header />
       <h1>todos</h1>
         <div className="todosContainer">
           <TodoForm />
