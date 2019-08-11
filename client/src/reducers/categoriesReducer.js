@@ -4,7 +4,8 @@ import {
 } from '../actions/types'
 
 const initialState = {
-  items: []
+  items: [],
+  item: {}
 }
 
 export default function (state = initialState, action) {
@@ -19,5 +20,7 @@ export default function (state = initialState, action) {
         ...state,
         items: [...state.items, action.payload]
       }
+    default: 
+      return state
   }
 }
