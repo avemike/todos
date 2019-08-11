@@ -18,4 +18,22 @@ router.post('/', async (req, res) => {
   res.send(category)
 })
 
+// 
+// CATEGORY - TODO RELATION ROUTES
+//
+
+router.get('/:id/todos', async (req, res) => {
+    linkCategoryTodoModel.find({
+        category: mongoose.Types.ObjectId(req.params.id),
+      })
+      .populate('todo')
+      .exec()
+      .then(docs => {
+        const todos = docs.map(doc => {
+          return doc.todo;
+        })
+        res.send(todos);
+      })
+});
+
 module.exports = router
