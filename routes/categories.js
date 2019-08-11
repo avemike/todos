@@ -17,3 +17,5 @@ router.post('/', async (req, res) => {
   category = await category.save()
   res.send(category)
 })
+
+module.exports = router
