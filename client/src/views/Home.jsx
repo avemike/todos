@@ -1,48 +1,32 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
-import { fetchTodos } from '../actions/todoActions';
-import TodoForm from '../components/TodoForm';
-import Todo from '../components/Todo';
-import Header from '../components/Header';
+import { fetchCategories } from '../actions/categoryActions';
+import TodoPanel from '../components/TodoPanel'
+import Header from '../components/Header'
 
 class Home extends Component {  
-  componentWillMount() {
-    this.props.fetchTodos()
+  componentDidMount() {
+    this.props.fetchCategories()    
   }
-
+  
   render() {
-    const completed = []
-    const notCompleted = []
-    this.props.todos.forEach(todo => {
-      if(todo.isDone) completed.push(<Todo todo={todo} key={todo._id}/>)
-      else notCompleted.push(<Todo todo={todo} key={todo._id}/>)
-    })
+    const Panels = []
+    if(this.props.categories && this.props.categories.length > 0) {
+      this.props.categories.forEach( category => (
+        Panels.push(<TodoPanel category = { category } />)
+      ))
+    }
     return (
       <div className="App">
-      <Header />
-      <h1>todos</h1>
-        <div className="todosContainer">
-          <TodoForm />
-          <h2>New</h2>
-          <ul>
-            { notCompleted }
-          </ul>
-          <h2>Complete</h2>
-          <ul>
-            { completed }
-          </ul>
-        </div>
+        <Header />
+        { Panels }
       </div>
     )
   }
 }
-Home.propTypes = {
-  fetchTodos: PropTypes.func.isRequired,
-  todos: PropTypes.array.isRequired,
-}
+
 const mapStateToProps = state => ({
-  todos: state.todos.items,
+  categories: state.categories.items,
 })
 
-export default connect(mapStateToProps, { fetchTodos })(Home)
+export default connect(mapStateToProps, { fetchCategories })(Home)
