@@ -2,10 +2,11 @@ import React, { Component } from 'react'
 import TodoForm from '../components/TodoForm';
 import Todo from '../components/Todo';
 import { connect } from 'react-redux';
+import { fetchTodos } from '../actions/todoActions';
 
 class TodoPanel extends Component {  
   componentDidMount() {
-    console.log(this.props.lol)
+    
   }
   
   render() {
@@ -36,4 +37,4 @@ class TodoPanel extends Component {
   }
 }
 // export default TodoPanel
-export default connect(null, null)(TodoPanel)
+export default connect(null, { fetchTodos })(TodoPanel)

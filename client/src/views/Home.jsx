@@ -9,7 +9,6 @@ import Header from '../components/Header'
 class Home extends Component {  
   componentDidMount() {
     this.props.fetchCategories()
-    this.props.fetchTodos()
   }
   
   render() {
