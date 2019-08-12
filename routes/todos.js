@@ -13,11 +13,17 @@ router.get('/', (req, res) => {
 router.post('/', async (req, res) => {
   let todo = new todoModel({
     description: req.body.description,
-    isDone: req.body.isDone
+    isDone: false
   })
-
   todo = await todo.save()
-  res.send(todo)
+  
+  let categoryId = req.body.categoryId
+  let newLink = new linkCategoryWithId({
+    categoryId,
+    todoId: todo._id
+  })
+  newLink = await newLink.save()
+  res.send([todo, newLink])
 })
 
 // Update todo

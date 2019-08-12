@@ -50,7 +50,7 @@ router.post('/:category/todos/:todo', async (req, res) => {
   // checking if given params points to existing todo and category
   const isTodoExist = Boolean(await todoModel.findById( req.params.todo ));
   const isCategoryExist = Boolean(await categoryModel.findById( req.params.category ));
-  if(!isFlashcardExist || !isCategoryExist) return res.status(400).send(`Todo with id "${req.params.todo}" or/and category with id "${req.params.category}" do not exist`);
+  if(!isTodoExist || !isCategoryExist) return res.status(400).send(`Todo with id "${req.params.todo}" or/and category with id "${req.params.category}" do not exist`);
 
   let relation = new linkCategoryTodoModel({
       todo: mongoose.Types.ObjectId(req.params.todo),

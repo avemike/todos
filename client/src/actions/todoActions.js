@@ -30,13 +30,13 @@ export const updateTodo = todoData => dispatch => {
     })})
 }
 
-export const createTodo = todoData => dispatch => {
+export const createTodo = data => dispatch => {
   fetch('http://localhost:5000/api/todos', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
       },
-      body: JSON.stringify(todoData)
+      body: JSON.stringify(data)
     })
     .then(res => res.json())
     .then(todo => dispatch({

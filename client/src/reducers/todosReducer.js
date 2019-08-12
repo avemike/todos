@@ -20,7 +20,8 @@ export default function (state = initialState, action) {
       case NEW_TODO:
         return {
           ...state,
-          items: [...state.items, action.payload]
+          items: [...state.items, action.payload],
+          item: action.payload
         }
       case DELETE_TODO:
         const items = state.items.filter(item => item._id !== action.payload._id)

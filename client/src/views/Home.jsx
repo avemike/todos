@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+
 import { fetchCategories } from '../actions/categoryActions';
+import { fetchTodos } from '../actions/todoActions';
 import TodoPanel from '../components/TodoPanel'
 import Header from '../components/Header'
 
 class Home extends Component {  
   componentDidMount() {
-    this.props.fetchCategories()    
+    this.props.fetchCategories()
+    this.props.fetchTodos()
   }
   
   render() {
@@ -29,4 +32,4 @@ const mapStateToProps = state => ({
   categories: state.categories.items,
 })
 
-export default connect(mapStateToProps, { fetchCategories })(Home)
+export default connect(mapStateToProps, { fetchCategories, fetchTodos })(Home)

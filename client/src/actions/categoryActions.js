@@ -1,6 +1,7 @@
 import {
   FETCH_CATEGORIES,
-  NEW_CATEGORY
+  NEW_CATEGORY,
+  NEW_RELATION
 } from './types'
 
 export const fetchCategories = () => dispatch => {
@@ -26,4 +27,18 @@ export const createCategory = categoryData => dispatch => {
       type: NEW_CATEGORY,
       payload: category
     }))
+}
+
+export const linkCategoryWithTodo = data => dispatch => {
+  fetch(`http://localhost:5000/api/categories/${data.categoryId}/todos/${data.todoId}`, {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json'
+    }
+  })
+  .then(res => res.json())
+  .then(relation => dispatch({
+    type: NEW_RELATION,
+    payload: relation
+  }))
 }
