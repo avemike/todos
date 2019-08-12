@@ -1,20 +1,23 @@
 const express = require('express')
 const { categoryModel } = require('../models/categoryModel')
+const { linkCategoryTodoModel } = require('../models/linkCategoryTodoModel')
+const { todoModel } = require('../models/todoModel')
 const router = express.Router()
 
-// Get all todos
+// Get all categories
 router.get('/', (req, res) => {
   categoryModel.find({}, (err, category) => {
     res.send(category)
   })
 })
-// Create todo
+// Create category
 router.post('/', async (req, res) => {
   let category = new categoryModel({
     name: req.body.name
   })
 
   category = await category.save()
+
   res.send(category)
 })
 
@@ -34,6 +37,28 @@ router.get('/:id/todos', async (req, res) => {
         })
         res.send(todos);
       })
+});
+
+router.post('/:category/todos/:todo', async (req, res) => {
+  // checking if relation is already existing
+  const isExisting = Boolean(await linkCategoryTodoModel.findOne({
+      category : mongoose.Types.ObjectId(req.params.category),
+      todo : mongoose.Types.ObjectId(req.params.todo)
+  }))
+  if(isExisting) return res.status(400).send('This relation is existing');
+
+  // checking if given params points to existing todo and category
+  const isTodoExist = Boolean(await todoModel.findById( req.params.todo ));
+  const isCategoryExist = Boolean(await categoryModel.findById( req.params.category ));
+  if(!isFlashcardExist || !isCategoryExist) return res.status(400).send(`Todo with id "${req.params.todo}" or/and category with id "${req.params.category}" do not exist`);
+
+  let relation = new linkCategoryTodoModel({
+      todo: mongoose.Types.ObjectId(req.params.todo),
+      category: mongoose.Types.ObjectId(req.params.category)
+  });
+  relation = await relation.save();
+
+  res.send(relation);
 });
 
 module.exports = router
