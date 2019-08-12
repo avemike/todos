@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import TodoForm from '../components/TodoForm';
 import Todo from '../components/Todo';
 import { connect } from 'react-redux';
-import { fetchTodos } from '../actions/todoActions';
+import { fetchTodosByCategory } from '../actions/todoActions';
 
 class TodoPanel extends Component {  
   componentDidMount() {
-    
+    this.props.fetchTodosByCategory(this.props.category._id)
   }
   
   render() {
@@ -36,5 +36,14 @@ class TodoPanel extends Component {
     )
   }
 }
-// export default TodoPanel
-export default connect(null, { fetchTodos })(TodoPanel)
+
+const mapStateToProps = (state, props) => {
+  if(props.category) {
+    return {
+      todos: state.todos[props.category._id]
+    }
+  }
+  return null
+}
+
+export default connect(mapStateToProps, { fetchTodosByCategory })(TodoPanel)

@@ -2,7 +2,8 @@ import {
   FETCH_TODOS,
   NEW_TODO,
   DELETE_TODO,
-  UPDATE_TODO
+  UPDATE_TODO,
+  FETCH_TODOS_BY_CATEGORY
 } from './types'
 
 export const fetchTodos = () => dispatch => {
@@ -56,5 +57,14 @@ export const deleteTodo = _id => dispatch => {
     .then(message => dispatch({
       type: DELETE_TODO,
       payload: {message, _id}
+    }))
+}
+
+export const fetchTodosByCategory = categoryId => dispatch => {
+  fetch(`http://localhost:5000/api/categories/${categoryId}/todos`)
+    .then(res => res.json())
+    .then(todos => dispatch({
+      type: FETCH_TODOS_BY_CATEGORY,
+      payload: {todos, categoryId}
     }))
 }

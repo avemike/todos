@@ -15,7 +15,7 @@ class Home extends Component {
     const Panels = []
     if(this.props.categories && this.props.categories.length > 0) {
       this.props.categories.forEach( category => (
-        Panels.push(<TodoPanel category = { category } />)
+        Panels.push(<TodoPanel key = {category._id} category = { category } />)
       ))
     }
     return (

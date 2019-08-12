@@ -11,6 +11,8 @@ const linkCategoryTodoModel = mongoose.model('Todo-Category relation', new mongo
         ref: 'Category',
         require: true
     }
+}, {
+  collection: 'todoCategoryRelation'
 }));
 
 exports.linkCategoryTodoModel = linkCategoryTodoModel;

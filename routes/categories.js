@@ -1,4 +1,5 @@
 const express = require('express')
+const mongoose = require('mongoose')
 const { categoryModel } = require('../models/categoryModel')
 const { linkCategoryTodoModel } = require('../models/linkCategoryTodoModel')
 const { todoModel } = require('../models/todoModel')
@@ -26,17 +27,17 @@ router.post('/', async (req, res) => {
 //
 
 router.get('/:id/todos', async (req, res) => {
-    linkCategoryTodoModel.find({
-        category: mongoose.Types.ObjectId(req.params.id),
+  linkCategoryTodoModel.find({
+      category: mongoose.Types.ObjectId(req.params.id),
+    })
+    .populate('todo')
+    .exec()
+    .then(docs => {
+      const todos = docs.map(doc => {
+        return doc.todo;
       })
-      .populate('todo')
-      .exec()
-      .then(docs => {
-        const todos = docs.map(doc => {
-          return doc.todo;
-        })
-        res.send(todos);
-      })
+      res.send(todos);
+    })
 });
 
 router.post('/:category/todos/:todo', async (req, res) => {
