@@ -41,7 +41,6 @@ class TodoPanel extends Component {
 
 const mapStateToProps = (state, props) => {
   if(props.category) {
-    console.log(state.todos)
     return {
       todos: state.todos[props.category._id]
     }

@@ -30,7 +30,7 @@ class TodoForm extends Component {
   }
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit = {this.handleSubmit}>
         <input name="description" onChange={this.handleDescriptionChange} placeholder="Read a newspaper..."></input>
         <button className='add' type='submit'>Add</button>
       </form>

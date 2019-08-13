@@ -40,16 +40,13 @@ export const createTodo = (data, categoryId) => dispatch => {
       body: JSON.stringify({...data, categoryId})
     })
     .then(res => res.json())
-    .then(todo => {
-      console.log(todo)
-      console.log(categoryId)
-      return dispatch({
+    .then(item => dispatch({
       type: NEW_TODO,
-      payload: {todo: todo.todo, categoryId}
-    })})
+      payload: {todo: item.todo, categoryId}
+    }))
 }
 
-export const deleteTodo = _id => dispatch => {
+export const deleteTodo = (_id, categoryId) => dispatch => {
   fetch(`http://localhost:5000/api/todos/${_id}`, {
       method: 'DELETE',
       headers: {
@@ -59,7 +56,7 @@ export const deleteTodo = _id => dispatch => {
     .then(res => res.json())
     .then(message => dispatch({
       type: DELETE_TODO,
-      payload: {message, _id}
+      payload: {categoryId, message, _id}
     }))
 }
 

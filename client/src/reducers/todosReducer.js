@@ -25,10 +25,12 @@ export default function (state = initialState, action) {
         [action.payload.categoryId]: [...state[action.payload.categoryId], action.payload.todo],
       }
     case DELETE_TODO:
-      const items = state.items.filter(item => item._id !== action.payload._id)
+      const items = state[action.payload.categoryId].filter(item => {
+        if(item) return item._id !== action.payload._id
+      })
       return {
         ...state,
-        items
+        [action.payload.categoryId]: items
       }
     case UPDATE_TODO:
       const categoryId = action.payload.categoryId

@@ -25,11 +25,11 @@ class Todo extends Component {
         <div className="first-line">
           <CheckBox _id={this.props.todo._id} categoryId={this.props.categoryId} isDone={this.props.todo.isDone}/>
           <p>
-            {this.props.todo.description}
+            { this.props.todo.description }
           </p>
           <div className='settings' onClick={this.handleClick.bind(this)}>...</div>
         </div>
-        <TodoSettings show={this.state.showSettings} _id={this.props.todo._id}/>
+        <TodoSettings show={this.state.showSettings} _id={this.props.todo._id} categoryId={this.props.categoryId}/>
       </li>
     )
   }
