@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
+import { createCategory } from '../actions/categoryActions';
 
-export default class CreateCategoryWindow extends Component {
+class CreateCategoryWindow extends Component {
   constructor() {
     super()
     this.state = {
@@ -14,13 +16,14 @@ export default class CreateCategoryWindow extends Component {
   }
   onSubmit(e) {
     e.preventDefault()
+    this.props.createCategory({name: this.state.categoryName})
   }
   render() {
     return (
       <div className="createCategory__background">
         <div className="createCategory__field">
           <h2>Create category</h2>
-          <form>
+          <form onSubmit={this.onSubmit.bind(this)}>
             <input name="categoryName" onChange={this.onChange.bind(this)} value={this.state.categoryName} />
           </form>
           <div className="exit" onClick={this.props.close}>x</div>
@@ -29,3 +32,5 @@ export default class CreateCategoryWindow extends Component {
     )
   }
 }
+
+export default connect(null, {createCategory})(CreateCategoryWindow)

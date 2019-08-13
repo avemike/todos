@@ -20,7 +20,7 @@ class Header extends Component {
       <header className='upper-header'>
         <ul>
           <li onClick={this.toggleCreateCategoryWindow.bind(this)}>
-            Stwórz kategorię
+            Create category
           </li>
         </ul>
         {
