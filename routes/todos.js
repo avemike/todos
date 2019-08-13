@@ -24,7 +24,7 @@ router.post('/', async (req, res) => {
     todo: todo._id
   })
   newLink = await newLink.save()
-  res.send([todo, newLink])
+  res.send({todo, newLink})
 })
 
 // Update todo

@@ -26,7 +26,7 @@ class TodoForm extends Component {
       description: this.state.description
     }
     // console.log({...todo, categoryId: this.props.categoryId})
-    this.props.createTodo({...todo, categoryId: this.props.categoryId})
+    this.props.createTodo(todo, this.props.categoryId)
   }
   render() {
     return (

@@ -31,19 +31,22 @@ export const updateTodo = (todoData, categoryId) => dispatch => {
     })})
 }
 
-export const createTodo = data => dispatch => {
+export const createTodo = (data, categoryId) => dispatch => {
   fetch('http://localhost:5000/api/todos', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify({...data, categoryId})
     })
     .then(res => res.json())
-    .then(todo => dispatch({
+    .then(todo => {
+      console.log(todo)
+      console.log(categoryId)
+      return dispatch({
       type: NEW_TODO,
-      payload: todo
-    }))
+      payload: {todo: todo.todo, categoryId}
+    })})
 }
 
 export const deleteTodo = _id => dispatch => {
