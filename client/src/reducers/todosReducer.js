@@ -31,16 +31,19 @@ export default function (state = initialState, action) {
         items
       }
     case UPDATE_TODO:
-      const newItems = [];
-      state.items.forEach( item => {
-        if(item._id === action.payload._id) {
-          newItems.push(action.payload)
+      const categoryId = action.payload.categoryId
+      const todo = action.payload.todo
+      const newItems = []
+      state[categoryId].forEach( item => {
+        if(item) {
+          if(item._id === todo._id) newItems.push(todo)
+          else newItems.push(item)
         }
-        else newItems.push(item)
       })
+      
       return {
         ...state,
-        items: newItems 
+        [categoryId]: newItems 
       }
     case FETCH_TODOS_BY_CATEGORY:
       return {

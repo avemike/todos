@@ -15,7 +15,7 @@ export const fetchTodos = () => dispatch => {
     }))
 }
 
-export const updateTodo = todoData => dispatch => {
+export const updateTodo = (todoData, categoryId) => dispatch => {
   fetch(`http://localhost:5000/api/todos/${todoData._id}`, {
       method: 'PUT',
       headers: {
@@ -27,7 +27,7 @@ export const updateTodo = todoData => dispatch => {
     .then(todo => {
       dispatch({
         type: UPDATE_TODO,
-        payload: todo
+        payload: {todo, categoryId}
     })})
 }
 

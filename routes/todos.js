@@ -1,5 +1,6 @@
 const express = require('express')
 const { todoModel } = require('../models/todoModel')
+const { linkCategoryTodoModel } = require('../models/linkCategoryTodoModel')
 const router = express.Router()
 
 // Get all todos
@@ -18,9 +19,9 @@ router.post('/', async (req, res) => {
   todo = await todo.save()
   
   let categoryId = req.body.categoryId
-  let newLink = new linkCategoryWithId({
-    categoryId,
-    todoId: todo._id
+  let newLink = new linkCategoryTodoModel({
+    category: categoryId,
+    todo: todo._id
   })
   newLink = await newLink.save()
   res.send([todo, newLink])

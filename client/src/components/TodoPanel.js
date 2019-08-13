@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import TodoForm from '../components/TodoForm';
-import Todo from '../components/Todo';
-import { connect } from 'react-redux';
+import TodoForm from '../components/TodoForm'
+import Todo from '../components/Todo'
+import { connect } from 'react-redux'
 import { fetchTodosByCategory } from '../actions/todoActions';
 
 class TodoPanel extends Component {  
@@ -14,8 +14,10 @@ class TodoPanel extends Component {
     const notCompleted = []
     if(this.props.todos) {
       this.props.todos.forEach(todo => {
-        if(todo.isDone) completed.push(<Todo todo={todo} key={todo._id}/>)
-        else notCompleted.push(<Todo todo={todo} key={todo._id}/>)
+        if(todo) {
+          if(todo.isDone) completed.push(<Todo todo={todo} categoryId={this.props.category._id} key={todo._id}/>)
+          else notCompleted.push(<Todo todo={todo} categoryId={this.props.category._id} key={todo._id}/>)
+        }
       })
     }
     return (
@@ -39,6 +41,7 @@ class TodoPanel extends Component {
 
 const mapStateToProps = (state, props) => {
   if(props.category) {
+    console.log(state.todos)
     return {
       todos: state.todos[props.category._id]
     }

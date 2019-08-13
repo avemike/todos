@@ -23,7 +23,7 @@ class Todo extends Component {
     return (
       <li>
         <div className="first-line">
-          <CheckBox _id={this.props.todo._id} isDone={this.props.todo.isDone}/>
+          <CheckBox _id={this.props.todo._id} categoryId={this.props.categoryId} isDone={this.props.todo.isDone}/>
           <p>
             {this.props.todo.description}
           </p>

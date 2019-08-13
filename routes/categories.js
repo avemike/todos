@@ -18,7 +18,6 @@ router.post('/', async (req, res) => {
   })
 
   category = await category.save()
-
   res.send(category)
 })
 
@@ -58,7 +57,7 @@ router.post('/:category/todos/:todo', async (req, res) => {
       category: mongoose.Types.ObjectId(req.params.category)
   });
   relation = await relation.save();
-
+  console.log(relation)
   res.send(relation);
 });
 
