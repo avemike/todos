@@ -143,3 +143,33 @@ button.add {
   color: white;
   font-weight: bold;
 }
+.createCategory__background {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0, 0.3);
+}
+.createCategory__field {
+  background: white;
+  width: 40%;
+  height: 30%;
+  position: absolute;
+  left: 30%;
+  top: 32%;
+  z-index: 300;
+}
+.createCategory__field form input {
+  width: 80%;
+  margin-top: 1em;
+  height: 2em;
+  font-size: 2em;
+}
+.createCategory__field .exit {
+  position: absolute;
+  right: 18px;
+  top: 6px;
+  font-size: 2em;
+  cursor: pointer;
+}
