@@ -7,7 +7,8 @@ class CheckBox extends Component {
     this.props.updateTodo({
       _id: this.props._id,
       isDone: !this.props.isDone
-    })
+    }, this.props.categoryId)
+
   }
   render() {
     return (

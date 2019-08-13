@@ -10,6 +10,10 @@ const todoModel = mongoose.model('Todo', new mongoose.Schema({
   isDone: {
     type: Boolean,
     default: false,
+  },
+  category: {
+    type: String,
+    default: 'school'
   }
 }))
 

@@ -2,7 +2,8 @@ import {
   FETCH_TODOS,
   NEW_TODO,
   DELETE_TODO,
-  UPDATE_TODO
+  UPDATE_TODO,
+  FETCH_TODOS_BY_CATEGORY
 } from './types'
 
 export const fetchTodos = () => dispatch => {
@@ -14,7 +15,7 @@ export const fetchTodos = () => dispatch => {
     }))
 }
 
-export const updateTodo = todoData => dispatch => {
+export const updateTodo = (todoData, categoryId) => dispatch => {
   fetch(`http://localhost:5000/api/todos/${todoData._id}`, {
       method: 'PUT',
       headers: {
@@ -26,26 +27,26 @@ export const updateTodo = todoData => dispatch => {
     .then(todo => {
       dispatch({
         type: UPDATE_TODO,
-        payload: todo
+        payload: {todo, categoryId}
     })})
 }
 
-export const createTodo = todoData => dispatch => {
+export const createTodo = (data, categoryId) => dispatch => {
   fetch('http://localhost:5000/api/todos', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
       },
-      body: JSON.stringify(todoData)
+      body: JSON.stringify({...data, categoryId})
     })
     .then(res => res.json())
-    .then(todo => dispatch({
+    .then(item => dispatch({
       type: NEW_TODO,
-      payload: todo
+      payload: {todo: item.todo, categoryId}
     }))
 }
 
-export const deleteTodo = _id => dispatch => {
+export const deleteTodo = (_id, categoryId) => dispatch => {
   fetch(`http://localhost:5000/api/todos/${_id}`, {
       method: 'DELETE',
       headers: {
@@ -55,6 +56,15 @@ export const deleteTodo = _id => dispatch => {
     .then(res => res.json())
     .then(message => dispatch({
       type: DELETE_TODO,
-      payload: {message, _id}
+      payload: {categoryId, message, _id}
+    }))
+}
+
+export const fetchTodosByCategory = categoryId => dispatch => {
+  fetch(`http://localhost:5000/api/categories/${categoryId}/todos`)
+    .then(res => res.json())
+    .then(todos => dispatch({
+      type: FETCH_TODOS_BY_CATEGORY,
+      payload: {todos, categoryId}
     }))
 }

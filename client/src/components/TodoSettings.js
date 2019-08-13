@@ -4,7 +4,7 @@ import { deleteTodo } from '../actions/todoActions'
 
 class TodoSettings extends Component {
   handleDelete() {
-    this.props.deleteTodo(this.props._id)
+    this.props.deleteTodo(this.props._id, this.props.categoryId)
   }
   render() {
     const settingsFieldClass = this.props.show ?
