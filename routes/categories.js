@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
   })
 })
 // Create category
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
   let category = new categoryModel({
     name: req.body.name
   })

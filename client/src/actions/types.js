@@ -5,6 +5,7 @@ export const UPDATE_TODO = 'UPDATE_TODO'
 
 export const FETCH_CATEGORIES = 'FETCH_CATEGORIES'
 export const NEW_CATEGORY = 'NEW_CATEGORY'
+export const DELETE_CATEGORY = 'DELETE_CATEGORY'
 
 export const NEW_RELATION = 'NEW_RELATION'
 

@@ -1,7 +1,8 @@
 import {
   FETCH_CATEGORIES,
   NEW_CATEGORY,
-  NEW_RELATION
+  NEW_RELATION,
+  DELETE_CATEGORY
 } from './types'
 
 export const fetchCategories = () => dispatch => {
@@ -10,6 +11,21 @@ export const fetchCategories = () => dispatch => {
     .then(categories => dispatch({
       type: FETCH_CATEGORIES,
       payload: categories 
+    })
+  )
+}
+
+export const deleteCategory = categoryId => dispatch => {
+  fetch(`http://localhost:5000/api/categories/${categoryId}`, {
+    method: 'DELETE',
+    headers: {
+      'content-type': 'application/json'
+    }
+  })
+    .then(res => res.json())
+    .then(message => dispatch({
+      type: DELETE_CATEGORY,
+      payload: {categoryId, message}
     })
   )
 }

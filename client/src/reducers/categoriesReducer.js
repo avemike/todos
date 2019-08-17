@@ -1,6 +1,7 @@
 import {
   FETCH_CATEGORIES,
-  NEW_CATEGORY
+  NEW_CATEGORY,
+  DELETE_CATEGORY
 } from '../actions/types'
 
 const initialState = {
@@ -19,6 +20,13 @@ export default function (state = initialState, action) {
       return {
         ...state,
         items: [...state.items, action.payload]
+      }
+    case DELETE_CATEGORY:
+      console.log(action.payload) 
+      const items = state.items.filter( (item) => item && action.payload.categoryId !== item._id)
+      return {
+        ...state,
+        items
       }
     default: 
       return state

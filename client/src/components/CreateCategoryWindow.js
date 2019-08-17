@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { createCategory } from '../actions/categoryActions';
+import { createCategory, deleteCategory } from '../actions/categoryActions';
 
 class CreateCategoryWindow extends Component {
   constructor() {
@@ -18,6 +18,9 @@ class CreateCategoryWindow extends Component {
     e.preventDefault()
     this.props.createCategory({name: this.state.categoryName})
   }
+  handleDelete(categoryId) {
+    this.props.deleteCategory(categoryId)
+  }
   render() {
     return (
       <div className="createCategory__background">
@@ -30,7 +33,7 @@ class CreateCategoryWindow extends Component {
                   <p className="categoryName">
                     {category.name}
                   </p>
-                  <p className="deleteCategory">
+                  <p className="deleteCategory" onClick={this.handleDelete.bind(this, category._id)}>
                     Delete
                   </p>
                 </li>
@@ -54,4 +57,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {createCategory})(CreateCategoryWindow)
+export default connect(mapStateToProps, {createCategory, deleteCategory})(CreateCategoryWindow)
