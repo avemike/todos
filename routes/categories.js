@@ -12,13 +12,22 @@ router.get('/', (req, res) => {
   })
 })
 // Create category
-router.post('/', async (req, res) => {
+router.post('/', (req, res) => {
   let category = new categoryModel({
     name: req.body.name
   })
 
   category = await category.save()
   res.send(category)
+})
+// Delete category
+router.delete('/:id', (req, res) => {
+  categoryModel.findByIdAndDelete(req.params.id, err => {
+    if (err) res.send(err)
+    res.json({
+      message: `category ${req.params.id} successfully deleted`
+    })
+  })
 })
 
 // 
