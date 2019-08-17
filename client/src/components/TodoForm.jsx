@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { createTodo } from '../actions/todoActions'
-import { linkCategoryWithTodo } from '../actions/categoryActions'
-import _ from 'lodash'
 
 class TodoForm extends Component {
   constructor() {

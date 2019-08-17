@@ -27,6 +27,7 @@ export default function (state = initialState, action) {
     case DELETE_TODO:
       const items = state[action.payload.categoryId].filter(item => {
         if(item) return item._id !== action.payload._id
+        return false
       })
       return {
         ...state,

@@ -9,6 +9,8 @@ class Header extends Component {
     this.state = {
       showCreateCategoryWindow: false
     }
+
+    this.toggleCreateCategoryWindow = this.toggleCreateCategoryWindow.bind(this)
   }
   toggleCreateCategoryWindow() {
     this.setState({
@@ -20,15 +22,15 @@ class Header extends Component {
       <div>
         <header className='upper-header'>
           <ul>
-            <li onClick={this.toggleCreateCategoryWindow.bind(this)}>
+            <li onClick={this.toggleCreateCategoryWindow}>
               Create category
             </li>
           </ul>
         </header>
         {
           this.state.showCreateCategoryWindow? 
-          <CreateCategoryWindow close={this.toggleCreateCategoryWindow.bind(this)}/>
-          : null
+            <CreateCategoryWindow close={this.toggleCreateCategoryWindow.bind(this)}/>
+            : null
         }
       </div>
     )
