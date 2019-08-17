@@ -17,18 +17,20 @@ class Header extends Component {
   }
   render() {
     return (
-      <header className='upper-header'>
-        <ul>
-          <li onClick={this.toggleCreateCategoryWindow.bind(this)}>
-            Create category
-          </li>
-        </ul>
+      <div>
+        <header className='upper-header'>
+          <ul>
+            <li onClick={this.toggleCreateCategoryWindow.bind(this)}>
+              Create category
+            </li>
+          </ul>
+        </header>
         {
           this.state.showCreateCategoryWindow? 
           <CreateCategoryWindow close={this.toggleCreateCategoryWindow.bind(this)}/>
           : null
         }
-      </header>
+      </div>
     )
   }
 }
