@@ -22,7 +22,22 @@ class CreateCategoryWindow extends Component {
     return (
       <div className="createCategory__background">
         <div className="createCategory__field">
-          <h2>Create category</h2>
+          <ul>
+            <h2>Categories</h2>
+            {
+              this.props.categories.map( category => (
+                <li>
+                  <p className="categoryName">
+                    {category.name}
+                  </p>
+                  <p className="deleteCategory">
+                    Delete
+                  </p>
+                </li>
+              ))
+            }
+          </ul>
+          <h2>Create new category</h2>
           <form onSubmit={this.onSubmit.bind(this)}>
             <input name="categoryName" onChange={this.onChange.bind(this)} value={this.state.categoryName} />
           </form>
@@ -33,4 +48,10 @@ class CreateCategoryWindow extends Component {
   }
 }
 
-export default connect(null, {createCategory})(CreateCategoryWindow)
+const mapStateToProps = state => {
+  return {
+    categories: state.categories.items
+  }
+}
+
+export default connect(mapStateToProps, {createCategory})(CreateCategoryWindow)

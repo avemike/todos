@@ -178,19 +178,45 @@ button.add {
   width: 100vw;
   height: 100vh;
   background: rgba(0,0,0, 0.3);
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .createCategory__field {
   background: white;
   width: 40%;
-  height: 30%;
+  min-width: 360px;
+  height: fit-content;
   position: absolute;
   left: 30%;
-  top: 32%;
   z-index: 400;
+
+  display: flex;
+  flex-flow: column nowrap;
 }
+.createCategory__field ul {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+}
+.createCategory__field li {
+  width: 80%;
+}
+.createCategory__field .deleteCategory {
+  float: right;
+  color: red;
+}
+.createCategory__field .categoryName {
+  float: left;
+  font-size: 1.15rem;
+}
+
 .createCategory__field form input {
   width: 80%;
-  margin-top: 1em;
+  margin: 1em 0;
   height: 2em;
   font-size: 2em;
 }
