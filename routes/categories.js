@@ -22,6 +22,7 @@ router.post('/', async (req, res) => {
 })
 // Delete category
 router.delete('/:id', (req, res) => {
+  // delete category
   categoryModel.findByIdAndDelete(req.params.id, err => {
     if (err) res.send(err)
     res.json({

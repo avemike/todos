@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { createCategory, deleteCategory } from '../actions/categoryActions';
 
-class CreateCategoryWindow extends Component {
+class CategoryWindow extends Component {
   constructor() {
     super()
     this.state = {
@@ -57,4 +57,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {createCategory, deleteCategory})(CreateCategoryWindow)
+export default connect(mapStateToProps, {createCategory, deleteCategory})(CategoryWindow)

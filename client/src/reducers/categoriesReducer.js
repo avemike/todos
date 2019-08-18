@@ -22,7 +22,6 @@ export default function (state = initialState, action) {
         items: [...state.items, action.payload]
       }
     case DELETE_CATEGORY:
-      console.log(action.payload) 
       const items = state.items.filter( (item) => item && action.payload.categoryId !== item._id)
       return {
         ...state,
