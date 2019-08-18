@@ -32,17 +32,17 @@ export const updateTodo = (todoData, categoryId) => dispatch => {
 }
 
 export const createTodo = (data, categoryId) => dispatch => {
-  fetch('http://localhost:5000/api/todos', {
+  fetch(`http://localhost:5000/api/categories/${categoryId}/todo`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
       },
-      body: JSON.stringify({...data, categoryId})
+      body: JSON.stringify(data)
     })
     .then(res => res.json())
     .then(item => dispatch({
       type: NEW_TODO,
-      payload: {todo: item.todo, categoryId}
+      payload: {todo: item.todo}
     }))
 }
 

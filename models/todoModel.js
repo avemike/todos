@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
+const Schema = mongoose.Schema
 
-const todoModel = mongoose.model('Todo', new mongoose.Schema({
+const todo = new Schema({
   description: {
     type: String,
     required: true,
@@ -10,11 +11,7 @@ const todoModel = mongoose.model('Todo', new mongoose.Schema({
   isDone: {
     type: Boolean,
     default: false,
-  },
-  category: {
-    type: String,
-    default: 'school'
   }
-}))
+})
 
-exports.todoModel = todoModel
+exports.todoModel = mongoose.model('Todo', todo)

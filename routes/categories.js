@@ -1,7 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const { categoryModel } = require('../models/categoryModel')
-const { linkCategoryTodoModel } = require('../models/linkCategoryTodoModel')
 const { todoModel } = require('../models/todoModel')
 const router = express.Router()
 
@@ -22,7 +21,6 @@ router.post('/', async (req, res) => {
 })
 // Delete category
 router.delete('/:id', (req, res) => {
-  // delete category
   categoryModel.findByIdAndDelete(req.params.id, err => {
     if (err) res.send(err)
     res.json({
@@ -31,44 +29,46 @@ router.delete('/:id', (req, res) => {
   })
 })
 
+// Update category
+router.put('/:id', async (req, res) => {
+  categoryModel.findByIdAndUpdate(req.params.id, req.body, (err, category) => {
+    if (err) res.send(err)
+    res.json(Object.assign({}, category.toJSON(), {
+      name: req.body.name
+    }))
+  })
+})
+
 // 
-// CATEGORY - TODO RELATION ROUTES
-//
+// TODOS requests
+// 
 
-router.get('/:id/todos', async (req, res) => {
-  linkCategoryTodoModel.find({
-      category: mongoose.Types.ObjectId(req.params.id),
-    })
-    .populate('todo')
-    .exec()
-    .then(docs => {
-      const todos = docs.map(doc => {
-        return doc.todo;
-      })
-      res.send(todos);
-    })
-});
+// Create a todo
+router.post('/:categoryId/todo', async (req, res) => {
+  // category
+  const category = await categoryModel.findById(req.params.categoryId)
 
-router.post('/:category/todos/:todo', async (req, res) => {
-  // checking if relation is already existing
-  const isExisting = Boolean(await linkCategoryTodoModel.findOne({
-      category : mongoose.Types.ObjectId(req.params.category),
-      todo : mongoose.Types.ObjectId(req.params.todo)
-  }))
-  if(isExisting) return res.status(400).send('This relation is existing');
+  // creates a todo
+  const todo = new todoModel({
+    description: req.body.description,
+    isDone: false,
+    category: req.params.categoryId
+  })
+  await todo.save()
 
-  // checking if given params points to existing todo and category
-  const isTodoExist = Boolean(await todoModel.findById( req.params.todo ));
-  const isCategoryExist = Boolean(await categoryModel.findById( req.params.category ));
-  if(!isTodoExist || !isCategoryExist) return res.status(400).send(`Todo with id "${req.params.todo}" or/and category with id "${req.params.category}" do not exist`);
+  // link todo to category
+  category.todos.push(todo._id)
+  await category.save()
 
-  let relation = new linkCategoryTodoModel({
-      todo: mongoose.Types.ObjectId(req.params.todo),
-      category: mongoose.Types.ObjectId(req.params.category)
-  });
-  relation = await relation.save();
-  console.log(relation)
-  res.send(relation);
-});
+  res.send(todo)
+})
+
+// Fetch todos by category
+router.get("/:categoryId/todos", async (req, res) => {
+  const category = await categoryModel.findById(req.params.categoryId)
+    .populate("todos")
+
+  res.send(category.todos)
+})
 
 module.exports = router
