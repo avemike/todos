@@ -19,7 +19,6 @@ export default function (state = initialState, action) {
         items: action.payload
       }
     case NEW_TODO:
-
       return {
         ...state,
         [action.payload.categoryId]: [...state[action.payload.categoryId], action.payload.todo],

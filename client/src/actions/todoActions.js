@@ -40,9 +40,9 @@ export const createTodo = (data, categoryId) => dispatch => {
       body: JSON.stringify(data)
     })
     .then(res => res.json())
-    .then(item => dispatch({
+    .then(todo => dispatch({
       type: NEW_TODO,
-      payload: {todo: item.todo}
+      payload: {todo, categoryId}
     }))
 }
 

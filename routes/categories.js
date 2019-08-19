@@ -10,6 +10,7 @@ router.get('/', (req, res) => {
     res.send(category)
   })
 })
+
 // Create category
 router.post('/', async (req, res) => {
   let category = new categoryModel({
@@ -19,10 +20,14 @@ router.post('/', async (req, res) => {
   category = await category.save()
   res.send(category)
 })
+
 // Delete category
 router.delete('/:id', (req, res) => {
-  categoryModel.findByIdAndDelete(req.params.id, err => {
-    if (err) res.send(err)
+  categoryModel.findById(req.params.id, (err, category) => {
+    if (err) return next(err)
+    
+    category.remove()
+    
     res.json({
       message: `category ${req.params.id} successfully deleted`
     })
