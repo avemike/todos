@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { updateTodo, deleteTodo } from '../actions/todoActions'
+import { deleteTodo, updateTodoDescription } from '../actions/todoActions'
 import CheckBox from './CheckBox'
 import TodoSettings from './TodoSettings'
 
@@ -35,4 +35,4 @@ class Todo extends Component {
   }
 }
 
-export default connect(null, { updateTodo, deleteTodo })(Todo)
+export default connect(null, { updateTodo: updateTodoDescription, deleteTodo })(Todo)

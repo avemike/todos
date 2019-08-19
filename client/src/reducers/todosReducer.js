@@ -2,8 +2,9 @@ import {
   FETCH_TODOS,
   NEW_TODO,
   DELETE_TODO,
-  UPDATE_TODO,
-  FETCH_TODOS_BY_CATEGORY
+  UPDATE_TODO_CATEGORY,
+  FETCH_TODOS_BY_CATEGORY,
+  UPDATE_TODO_DESCRIPTION
 } from '../actions/types'
 
 const initialState = {
@@ -32,7 +33,7 @@ export default function (state = initialState, action) {
         ...state,
         [action.payload.categoryId]: items
       }
-    case UPDATE_TODO:
+    case UPDATE_TODO_DESCRIPTION:
       const categoryId = action.payload.categoryId
       const todo = action.payload.todo
       const newItems = []

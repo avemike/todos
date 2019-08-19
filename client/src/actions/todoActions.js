@@ -2,7 +2,8 @@ import {
   FETCH_TODOS,
   NEW_TODO,
   DELETE_TODO,
-  UPDATE_TODO,
+  UPDATE_TODO_CATEGORY,
+  UPDATE_TODO_DESCRIPTION,
   FETCH_TODOS_BY_CATEGORY
 } from './types'
 
@@ -15,7 +16,7 @@ export const fetchTodos = () => dispatch => {
     }))
 }
 
-export const updateTodo = (todoData, categoryId) => dispatch => {
+export const updateTodoDescription = (todoData, categoryId) => dispatch => {
   fetch(`http://localhost:5000/api/todos/${todoData._id}`, {
       method: 'PUT',
       headers: {
@@ -26,11 +27,27 @@ export const updateTodo = (todoData, categoryId) => dispatch => {
     .then(res => res.json())
     .then(todo => {
       dispatch({
-        type: UPDATE_TODO,
+        type: UPDATE_TODO_DESCRIPTION,
         payload: {todo, categoryId}
     })})
 }
-
+export const updateTodoCategory = (todo, newCategoryId) => dispatch => {
+  const oldCategoryId = todo.category
+  fetch(`http://localhost:5000/api/todos/${todo._id}`, {
+    method: 'PUT',
+    headers: {
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify({...todo, category: newCategoryId})
+  })
+  .then(res => res.json())
+  .then(returnedTodo => {
+    dispatch({
+      type: UPDATE_TODO_CATEGORY,
+      payload: {returnedTodo}
+    })
+  })
+} 
 export const createTodo = (data, categoryId) => dispatch => {
   fetch(`http://localhost:5000/api/categories/${categoryId}/todo`, {
       method: 'POST',
