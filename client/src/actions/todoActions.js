@@ -33,18 +33,17 @@ export const updateTodoDescription = (todoData, categoryId) => dispatch => {
 }
 export const updateTodoCategory = (todo, newCategoryId) => dispatch => {
   const oldCategoryId = todo.category
-  fetch(`http://localhost:5000/api/todos/${todo._id}`, {
+  fetch(`http://localhost:5000/api/categories/${newCategoryId}/todos/${todo._id}`, {
     method: 'PUT',
     headers: {
       'content-type': 'application/json'
-    },
-    body: JSON.stringify({...todo, category: newCategoryId})
+    }
   })
   .then(res => res.json())
-  .then(returnedTodo => {
+  .then(data => {
     dispatch({
       type: UPDATE_TODO_CATEGORY,
-      payload: {returnedTodo}
+      payload: {...data}
     })
   })
 } 

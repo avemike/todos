@@ -7,12 +7,7 @@ import {
   UPDATE_TODO_DESCRIPTION
 } from '../actions/types'
 
-const initialState = {
-  items: [],
-  item: {}
-}
-
-export default function (state = initialState, action) {
+export default function (state = {}, action) {
   switch (action.type) {
     case FETCH_TODOS:
       return {
@@ -43,11 +38,21 @@ export default function (state = initialState, action) {
           else newItems.push(item)
         }
       })
-      
+
       return {
         ...state,
         [categoryId]: newItems 
       }
+    case UPDATE_TODO_CATEGORY: {
+      const {newCategory, oldCategory, todo} = action.payload
+      const oldCategoryTodos = state[oldCategory._id].filter( item => item._id !== todo._id )
+      
+      return {
+        ...state,
+        [newCategory._id]: [...state[newCategory._id], todo], 
+        [oldCategory._id]: oldCategoryTodos,
+      }
+    }
     case FETCH_TODOS_BY_CATEGORY:
       return {
         ...state,

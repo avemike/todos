@@ -70,7 +70,11 @@ router.put('/:newCategoryId/todos/:todoId', async (req, res) => {
   await chosenTodo.save(err => res.send(err))
 
   // success
-  res.send(`Successfully shifted ${chosenTodo._id} todo to ${req.params.newCategoryId}`)
+  res.send({
+    todo: chosenTodo,
+    oldCategory: beforeShiftCategory,
+    newCategory: afterShiftCategory
+  })
 })
 // Create a todo
 router.post('/:categoryId/todo', async (req, res) => {
