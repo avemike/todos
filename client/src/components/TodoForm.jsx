@@ -21,7 +21,8 @@ class TodoForm extends Component {
   handleSubmit(e) {
     e.preventDefault()
     const todo = {
-      description: this.state.description
+      description: this.state.description,
+      category: this.props.categoryId
     }
     // console.log({...todo, categoryId: this.props.categoryId})
     this.props.createTodo(todo, this.props.categoryId)

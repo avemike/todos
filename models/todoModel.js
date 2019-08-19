@@ -11,6 +11,9 @@ const todo = new Schema({
   isDone: {
     type: Boolean,
     default: false,
+  },
+  category: {
+    type: Schema.Types.ObjectId
   }
 })
 
