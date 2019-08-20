@@ -40,7 +40,7 @@ export const updateTodoCategory = (todo, newCategoryId) => dispatch => {
   })
   .then(res => res.json())
   .then(data => {
-    dispatch({
+    return dispatch({
       type: UPDATE_TODO_CATEGORY,
       payload: {...data}
     })

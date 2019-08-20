@@ -58,17 +58,17 @@ router.put('/:newCategoryId/todos/:todoId', async (req, res) => {
 
   // delete todo from old category
   beforeShiftCategory.todos = beforeShiftCategory.todos.filter(todoId => JSON.stringify(todoId) !== JSON.stringify(chosenTodo._id))
-  await beforeShiftCategory.save(err => res.send(err))
+  await beforeShiftCategory.save(err => {if(err) res.send(err)})
 
   // add todo to new category
   afterShiftCategory.todos.push(chosenTodo)
-  await afterShiftCategory.save(err => res.send(err))
+  await afterShiftCategory.save(err => {if(err) res.send(err)})
   
 
   // change categoryId inside todo
   chosenTodo.category = afterShiftCategory._id 
-  await chosenTodo.save(err => res.send(err))
-
+  await chosenTodo.save(err => {if(err) res.send(err)})
+  
   // success
   res.send({
     todo: chosenTodo,
@@ -76,6 +76,7 @@ router.put('/:newCategoryId/todos/:todoId', async (req, res) => {
     newCategory: afterShiftCategory
   })
 })
+
 // Create a todo
 router.post('/:categoryId/todo', async (req, res) => {
   // category

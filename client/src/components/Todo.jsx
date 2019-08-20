@@ -11,9 +11,14 @@ class Todo extends Component {
     this.state = {
       showSettings: false
     }
+
+    this.handleDragStart = this.handleDragStart.bind(this)
+    this.handleDragEnd = this.handleDragEnd.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
-  handleDragStart = e => {
-    this.props.todoDragUp()
+  handleDragStart = () => {
+    this.props.todoDragUp(this.props.todo)
   }
   handleDragEnd = e => {
     this.props.todoDragDown()
@@ -29,12 +34,12 @@ class Todo extends Component {
   render() {
     return (
       <li>
-        <div className="first-line" draggable="true" onDragStart={this.handleDragStart.bind(this)} onDragEnd={this.handleDragEnd.bind(this)}>
+        <div className="first-line" draggable="true" onDragStart={this.handleDragStart} onDragEnd={this.handleDragEnd}>
           <CheckBox _id={this.props.todo._id} categoryId={this.props.categoryId} isDone={this.props.todo.isDone}/>
           <p>
             { this.props.todo.description }
           </p>
-          <div className='settings' onClick={this.handleClick.bind(this)}>...</div>
+          <div className='settings' onClick={this.handleClick}>...</div>
         </div>
         <TodoSettings show={this.state.showSettings} _id={this.props.todo._id} categoryId={this.props.categoryId}/>
       </li>

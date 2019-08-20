@@ -12,7 +12,7 @@ export default function (state = initialState, action) {
     case TODO_DRAG_UP: 
       return {
         ...state,
-        holdingTodo: true
+        holdingTodo: action.payload.todo,
       }
     case TODO_DRAG_DOWN: 
       return {

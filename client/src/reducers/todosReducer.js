@@ -46,11 +46,11 @@ export default function (state = {}, action) {
     case UPDATE_TODO_CATEGORY: {
       const {newCategory, oldCategory, todo} = action.payload
       const oldCategoryTodos = state[oldCategory._id].filter( item => item._id !== todo._id )
-      
+      if(newCategory._id === oldCategory._id) return state
       return {
         ...state,
-        [newCategory._id]: [...state[newCategory._id], todo], 
         [oldCategory._id]: oldCategoryTodos,
+        [newCategory._id]: [...state[newCategory._id], todo] 
       }
     }
     case FETCH_TODOS_BY_CATEGORY:

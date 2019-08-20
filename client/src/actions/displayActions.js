@@ -3,13 +3,14 @@ import {
   TODO_DRAG_DOWN,
 } from './types'
 
-export const todoDragUp = () => dispatch => {
+export const todoDragUp = (todo) => dispatch => {
   dispatch({
-    type: TODO_DRAG_UP
+    type: TODO_DRAG_UP,
+    payload: { todo }
   })
 }
 export const todoDragDown = () => dispatch => {
   dispatch({
-    type: TODO_DRAG_DOWN
+    type: TODO_DRAG_DOWN,
   })
 }

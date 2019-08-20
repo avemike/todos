@@ -35,7 +35,7 @@ class TodoPanel extends Component {
             { completed || null}
           </ul>
         </div>
-        <TodoDroppable />  
+        <TodoDroppable categoryId={this.props.category._id}/>  
       </div>
     )
   }
