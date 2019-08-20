@@ -3,6 +3,7 @@ import TodoForm from '../components/TodoForm'
 import Todo from '../components/Todo'
 import { connect } from 'react-redux'
 import { fetchTodosByCategory } from '../actions/todoActions';
+import TodoDroppable from './TodoDroppable';
 
 class TodoPanel extends Component {  
   componentDidMount() {
@@ -34,6 +35,7 @@ class TodoPanel extends Component {
             { completed || null}
           </ul>
         </div>
+        <TodoDroppable />  
       </div>
     )
   }

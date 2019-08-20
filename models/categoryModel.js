@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const { todoModel } = require('./todoModel')
-
 const category = new Schema({
   name: {
     type: String,

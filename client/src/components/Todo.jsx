@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { deleteTodo, updateTodoDescription } from '../actions/todoActions'
 import CheckBox from './CheckBox'
 import TodoSettings from './TodoSettings'
+import { todoDragUp, todoDragDown } from '../actions/displayActions';
 
 class Todo extends Component {
   constructor() {
@@ -10,6 +11,12 @@ class Todo extends Component {
     this.state = {
       showSettings: false
     }
+  }
+  handleDragStart = e => {
+    this.props.todoDragUp()
+  }
+  handleDragEnd = e => {
+    this.props.todoDragDown()
   }
   handleDelete() {
     this.props.deleteTodo(this.props.todo._id)
@@ -22,7 +29,7 @@ class Todo extends Component {
   render() {
     return (
       <li>
-        <div className="first-line">
+        <div className="first-line" draggable="true" onDragStart={this.handleDragStart.bind(this)} onDragEnd={this.handleDragEnd.bind(this)}>
           <CheckBox _id={this.props.todo._id} categoryId={this.props.categoryId} isDone={this.props.todo.isDone}/>
           <p>
             { this.props.todo.description }
@@ -35,4 +42,4 @@ class Todo extends Component {
   }
 }
 
-export default connect(null, { updateTodo: updateTodoDescription, deleteTodo })(Todo)
+export default connect(null, { updateTodo: updateTodoDescription, deleteTodo, todoDragUp, todoDragDown})(Todo)

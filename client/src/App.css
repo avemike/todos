@@ -80,6 +80,7 @@ p {
   justify-content: space-between;
   max-width: 500px;
   align-items: center;
+  cursor: grab;
 }
 .todosContainer>ul>li+li {
   border-top: 2px solid rgba(0,0,0, 0.3);
@@ -232,4 +233,10 @@ button.add {
   top: 6px;
   font-size: 2em;
   cursor: pointer;
+}
+
+.todoDroppable {
+  width: 100%;
+  height: 60px;
+  background: rgba(0,0,0, 0.1);
 }

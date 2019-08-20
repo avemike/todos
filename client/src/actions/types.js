@@ -11,3 +11,7 @@ export const DELETE_CATEGORY = 'DELETE_CATEGORY'
 export const NEW_RELATION = 'NEW_RELATION'
 
 export const FETCH_TODOS_BY_CATEGORY = 'FETCH_TODOS_BY_CATEGORY'
+
+// Display actions
+export const TODO_DRAG_UP = 'TODO_DRAG_UP'
+export const TODO_DRAG_DOWN = 'TODO_DRAG_DOWN'
