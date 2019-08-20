@@ -1,34 +1,38 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { createCategory, fetchCategories } from '../actions/categoryActions'
-import CreateCategoryWindow from './CreateCategoryWindow';
+import CategoryWindow from './CategoryWindow';
 
 class Header extends Component {
   constructor() {
     super()
     this.state = {
-      showCreateCategoryWindow: false
+      showCategoryWindow: false
     }
+
+    this.toggleCategoryWindow = this.toggleCategoryWindow.bind(this)
   }
-  toggleCreateCategoryWindow() {
+  toggleCategoryWindow() {
     this.setState({
-      showCreateCategoryWindow: !this.state.showCreateCategoryWindow
+      showCategoryWindow: !this.state.showCategoryWindow
     })
   }
   render() {
     return (
-      <header className='upper-header'>
-        <ul>
-          <li onClick={this.toggleCreateCategoryWindow.bind(this)}>
-            Create category
-          </li>
-        </ul>
+      <div>
+        <header className='upper-header'>
+          <ul>
+            <li onClick={this.toggleCategoryWindow}>
+              Categories
+            </li>
+          </ul>
+        </header>
         {
-          this.state.showCreateCategoryWindow? 
-          <CreateCategoryWindow close={this.toggleCreateCategoryWindow.bind(this)}/>
-          : null
+          this.state.showCategoryWindow? 
+            <CategoryWindow close={this.toggleCategoryWindow.bind(this)}/>
+            : null
         }
-      </header>
+      </div>
     )
   }
 }

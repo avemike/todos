@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { createTodo } from '../actions/todoActions'
-import { linkCategoryWithTodo } from '../actions/categoryActions'
-import _ from 'lodash'
 
 class TodoForm extends Component {
   constructor() {
@@ -23,7 +21,8 @@ class TodoForm extends Component {
   handleSubmit(e) {
     e.preventDefault()
     const todo = {
-      description: this.state.description
+      description: this.state.description,
+      category: this.props.categoryId
     }
     // console.log({...todo, categoryId: this.props.categoryId})
     this.props.createTodo(todo, this.props.categoryId)

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { updateTodo } from '../actions/todoActions'
+import { updateTodoDescription } from '../actions/todoActions'
 
 class CheckBox extends Component {
   handleClick() {
@@ -21,4 +21,4 @@ class CheckBox extends Component {
   }
 }
 
-export default connect(null, {updateTodo})(CheckBox)
+export default connect(null, {updateTodo: updateTodoDescription})(CheckBox)

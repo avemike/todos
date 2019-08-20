@@ -2,7 +2,8 @@ import {
   FETCH_TODOS,
   NEW_TODO,
   DELETE_TODO,
-  UPDATE_TODO,
+  UPDATE_TODO_CATEGORY,
+  UPDATE_TODO_DESCRIPTION,
   FETCH_TODOS_BY_CATEGORY
 } from './types'
 
@@ -15,7 +16,7 @@ export const fetchTodos = () => dispatch => {
     }))
 }
 
-export const updateTodo = (todoData, categoryId) => dispatch => {
+export const updateTodoDescription = (todoData, categoryId) => dispatch => {
   fetch(`http://localhost:5000/api/todos/${todoData._id}`, {
       method: 'PUT',
       headers: {
@@ -26,23 +27,37 @@ export const updateTodo = (todoData, categoryId) => dispatch => {
     .then(res => res.json())
     .then(todo => {
       dispatch({
-        type: UPDATE_TODO,
+        type: UPDATE_TODO_DESCRIPTION,
         payload: {todo, categoryId}
     })})
 }
-
+export const updateTodoCategory = (todo, newCategoryId) => dispatch => {
+  fetch(`http://localhost:5000/api/categories/${newCategoryId}/todos/${todo._id}`, {
+    method: 'PUT',
+    headers: {
+      'content-type': 'application/json'
+    }
+  })
+  .then(res => res.json())
+  .then(data => {
+    return dispatch({
+      type: UPDATE_TODO_CATEGORY,
+      payload: {...data}
+    })
+  })
+} 
 export const createTodo = (data, categoryId) => dispatch => {
-  fetch('http://localhost:5000/api/todos', {
+  fetch(`http://localhost:5000/api/categories/${categoryId}/todo`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
       },
-      body: JSON.stringify({...data, categoryId})
+      body: JSON.stringify(data)
     })
     .then(res => res.json())
-    .then(item => dispatch({
+    .then(todo => dispatch({
       type: NEW_TODO,
-      payload: {todo: item.todo, categoryId}
+      payload: {todo, categoryId}
     }))
 }
 

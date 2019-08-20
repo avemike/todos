@@ -1,6 +1,5 @@
 const express = require('express')
 const { todoModel } = require('../models/todoModel')
-const { linkCategoryTodoModel } = require('../models/linkCategoryTodoModel')
 const router = express.Router()
 
 // Get all todos
@@ -10,22 +9,7 @@ router.get('/', (req, res) => {
   })
 })
 
-// Create todo
-router.post('/', async (req, res) => {
-  let todo = new todoModel({
-    description: req.body.description,
-    isDone: false
-  })
-  todo = await todo.save()
-  
-  let categoryId = req.body.categoryId
-  let newLink = new linkCategoryTodoModel({
-    category: categoryId,
-    todo: todo._id
-  })
-  newLink = await newLink.save()
-  res.send({todo, newLink})
-})
+// Create todo is in categories route
 
 // Update todo
 router.put('/:id', async (req, res) => {

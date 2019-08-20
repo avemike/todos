@@ -3,6 +3,7 @@ import TodoForm from '../components/TodoForm'
 import Todo from '../components/Todo'
 import { connect } from 'react-redux'
 import { fetchTodosByCategory } from '../actions/todoActions';
+import TodoDroppable from './TodoDroppable';
 
 class TodoPanel extends Component {  
   componentDidMount() {
@@ -21,7 +22,7 @@ class TodoPanel extends Component {
       })
     }
     return (
-      <div>
+      <div className="todosContainer__wrapper">
         <h1>{this.props.category.name}</h1>
         <div className="todosContainer">
           <TodoForm categoryId = {this.props.category._id}/>
@@ -34,6 +35,7 @@ class TodoPanel extends Component {
             { completed || null}
           </ul>
         </div>
+        <TodoDroppable categoryId={this.props.category._id}/>  
       </div>
     )
   }
