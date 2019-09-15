@@ -12,11 +12,12 @@ class CheckBox extends Component {
   }
   render() {
     return (
-      <input
-        type = 'checkbox'
-        className = 'check'
-        checked = {this.props.isDone}
-        onChange = {this.handleClick.bind(this)}/> 
+      <div className='checkbox-wrapper'>
+        <input
+          type = 'checkbox'
+          checked = {this.props.isDone}
+          onChange = {this.handleClick.bind(this)}/>
+      </div>
     )
   }
 }

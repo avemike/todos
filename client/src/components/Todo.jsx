@@ -34,12 +34,12 @@ class Todo extends Component {
   render() {
     return (
       <li>
-        <div className="first-line" draggable="true" onDragStart={this.handleDragStart} onDragEnd={this.handleDragEnd}>
+        <div className="todo" draggable="true" onDragStart={this.handleDragStart} onDragEnd={this.handleDragEnd}>
           <CheckBox _id={this.props.todo._id} categoryId={this.props.categoryId} isDone={this.props.todo.isDone}/>
           <p>
             { this.props.todo.description }
           </p>
-          <div className='settings' onClick={this.handleClick}>...</div>
+          {/* <div className='settings' onClick={this.handleClick}>...</div> */}
         </div>
         {/* <TodoSettings show={this.state.showSettings} _id={this.props.todo._id} categoryId={this.props.categoryId}/> */}
       </li>

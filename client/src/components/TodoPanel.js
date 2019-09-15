@@ -23,15 +23,11 @@ class TodoPanel extends Component {
     }
     return (
       <div className="todo-panel">
-        <h1>{this.props.category.name}</h1>
+        <h2>{this.props.category.name}</h2>
         <div className="todo-panel__todos">
           <TodoForm categoryId = {this.props.category._id}/>
-          <h2>New</h2>
           <ul>
             { notCompleted || null }
-          </ul>
-          <h2>Complete</h2>
-          <ul>
             { completed || null}
           </ul>
         </div>
