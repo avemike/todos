@@ -41,7 +41,7 @@ class Todo extends Component {
           </p>
           <div className='settings' onClick={this.handleClick}>...</div>
         </div>
-        <TodoSettings show={this.state.showSettings} _id={this.props.todo._id} categoryId={this.props.categoryId}/>
+        {/* <TodoSettings show={this.state.showSettings} _id={this.props.todo._id} categoryId={this.props.categoryId}/> */}
       </li>
     )
   }
