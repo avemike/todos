@@ -11,14 +11,17 @@ import Navigation from '../components/Navigation'
 class Home extends Component {  
   constructor() {
     super()
+    this.state = {
+      bg: null
+    }
   }
   componentDidMount(e) {
     this.props.fetchCategories()
     const backgroundPattern = Trianglify({
-      width: window.innerWidth - 50,
-      height: window.innerHeight
+      width: 1900,
+      height: 1100
     })
-    document.querySelector('.main-background').appendChild(backgroundPattern.canvas()) // Temp solution, change later
+    this.setState({bg: backgroundPattern.png()})
   }
   render() {
     const Panels = []
@@ -35,6 +38,7 @@ class Home extends Component {
     return (
       <div className="App">
         <div className="main-background">
+          <img src={this.state.bg}/>
         </div>
         <Header />
         <Navigation/>

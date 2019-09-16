@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Checkbox as MaterialCheckbox } from '@material-ui/core'
 import { updateTodoDescription } from '../actions/todoActions'
 
 class CheckBox extends Component {
@@ -13,10 +14,10 @@ class CheckBox extends Component {
   render() {
     return (
       <div className='checkbox-wrapper'>
-        <input
-          type = 'checkbox'
+        <MaterialCheckbox 
           checked = {this.props.isDone}
-          onChange = {this.handleClick.bind(this)}/>
+          onChange = {this.handleClick.bind(this)}
+        />
       </div>
     )
   }
