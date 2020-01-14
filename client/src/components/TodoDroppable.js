@@ -1,35 +1,25 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux';
 import { updateTodoCategory } from '../actions/todoActions';
 
-class TodoDroppable extends Component {
-  constructor() {
-    super()
-
-    this.onDrop = this.onDrop.bind(this)
-    this.onDragOver = this.onDragOver.bind(this)
-  }
-  onDragOver = (ev) => {
-    ev.preventDefault();
+const TodoDroppable = props => {
+  const onDragOver = event => {
+    event.preventDefault();
   }
 
-  onDrop = () => {
-    this.props.updateTodoCategory(this.props.holdingTodo, this.props.categoryId)
+  const onDrop = () => {
+    props.updateTodoCategory(props.holdingTodo, props.categoryId)
   }
-  render() {
-    if(this.props.holdingTodo) {
-      return (
-        <div
-          className="todoDroppable"
-          onDragOver={(e)=>this.onDragOver(e)}
-          onDrop={this.onDrop}
-        >
-               
-        </div>
-      )
-    }
-    else return null
-  }
+  
+  if(!props.holdingTodo) return null
+  
+  return (
+    <div
+      className="todoDroppable"
+      onDragOver={(e)=>onDragOver(e)}
+      onDrop={onDrop}>
+    </div>
+  )
 }
 const mapStateToProps = state => {
   return {

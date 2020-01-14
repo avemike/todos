@@ -4,9 +4,9 @@ import { Provider } from 'react-redux'
 import './App.css'
 import store from './store'
 
-import Home from './views/Home';
+import Home from './views/Home.jsx';
 
-export default function App() {
+export const App = () =>  {
   return (
     <Provider store={store}>
       <Switch>

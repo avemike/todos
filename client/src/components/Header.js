@@ -1,13 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-class Header extends Component {
-  render() {
-    return (
-      <header>
-        <h1>Todo-app name</h1>
-      </header>
-    )
-  }
+export const Header = () =>{
+  return (
+    <header>
+      <h1>Todo-app name</h1>
+    </header>
+  )
 }
-
-export default Header

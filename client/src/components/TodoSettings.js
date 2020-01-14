@@ -1,25 +1,25 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { deleteTodo } from '../actions/todoActions'
 
-class TodoSettings extends Component {
-  handleDelete() {
-    this.props.deleteTodo(this.props._id, this.props.categoryId)
+const TodoSettings = props => {
+  const handleDelete = () => {
+    props.deleteTodo(props._id, props.categoryId)
   }
-  render() {
-    const settingsFieldClass = this.props.show ?
-      'settings-field settings-field--expand'
-      : 'settings-field settings-field--hide'
+  
+  const settingsFieldClass = props.show ?
+    'settings-field settings-field--expand'
+    : 'settings-field settings-field--hide'
 
-    return (
-      <div className={settingsFieldClass}>
-        <ul>
-          <li onClick={this.handleDelete.bind(this)}>Usuń</li>
-          <li>Przenieś</li>
-        </ul>
-      </div>
-    ) 
-  }
+  return (
+    <div className={settingsFieldClass}>
+      <ul>
+        <li onClick={handleDelete.bind(this)}>Usuń</li>
+        <li>Przenieś</li>
+      </ul>
+    </div>
+  ) 
 }
+
 
 export default connect(null, {deleteTodo})(TodoSettings)

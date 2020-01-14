@@ -1,26 +1,25 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { Checkbox as MaterialCheckbox } from '@material-ui/core'
 import { updateTodoDescription } from '../actions/todoActions'
 
-class CheckBox extends Component {
-  handleClick() {
-    this.props.updateTodo({
-      _id: this.props._id,
-      isDone: !this.props.isDone
-    }, this.props.categoryId)
+const CheckBox = props => {
+  const handleClick = () => {
+    // Check / Uncheck checkbox, using updateTodo action (changing isDone parameter of choosed todo)
+    props.updateTodo({
+      _id: props._id,
+      isDone: !props.isDone
+    }, props.categoryId)
+  }
 
-  }
-  render() {
-    return (
-      <div className='checkbox-wrapper'>
-        <MaterialCheckbox 
-          checked = {this.props.isDone}
-          onChange = {this.handleClick.bind(this)}
-        />
-      </div>
-    )
-  }
+  return (
+    <div className='checkbox-wrapper'>
+      <MaterialCheckbox 
+        checked = {props.isDone}
+        onChange = {handleClick}
+      />
+    </div>
+  )
 }
 
 export default connect(null, {updateTodo: updateTodoDescription})(CheckBox)

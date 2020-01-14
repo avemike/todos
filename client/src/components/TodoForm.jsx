@@ -1,40 +1,27 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { createTodo } from '../actions/todoActions'
 
-class TodoForm extends Component {
-  constructor() {
-    super()
-    this.state = {
-      description: ''
-    }
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleDescriptionChange = this.handleDescriptionChange.bind(this)
-  }
-
-  handleDescriptionChange(e) {
-    this.setState({
-      description: e.target.value
-    })
-  }
-  handleSubmit(e) {
+const TodoForm = props => {
+  const [description, setDescription] = useState('')
+  
+  const handleSubmit = e => {
     e.preventDefault()
     const todo = {
-      description: this.state.description,
-      category: this.props.categoryId
+      description: description,
+      category: props.categoryId
     }
-    // console.log({...todo, categoryId: this.props.categoryId})
-    this.props.createTodo(todo, this.props.categoryId)
+    // console.log({...todo, categoryId: props.categoryId})
+    props.createTodo(todo, props.categoryId)
   }
-  render() {
-    return (
-      <form onSubmit = {this.handleSubmit}>
-        <input name="description" onChange={this.handleDescriptionChange} placeholder="Read a newspaper..."></input>
-        <button className='add' type='submit'>Add</button>
-      </form>
-    )
-  }
+  
+  return (
+    <form onSubmit = { handleSubmit }>
+      <input name="description" onChange={e => setDescription(e.target.value)} placeholder="Read a newspaper..."></input>
+      <button className='add' type='submit'>Add</button>
+    </form>
+  )
 }
 
 TodoForm.propTypes = {
