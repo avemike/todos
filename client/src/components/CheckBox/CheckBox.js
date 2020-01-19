@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { Checkbox as MaterialCheckbox } from '@material-ui/core'
 import { updateTodoDescription } from '../../actions/todoActions'
 
+import './checkBox.scss'
+
 const CheckBox = props => {
   const handleClick = () => {
     // Check / Uncheck checkbox, using updateTodo action (changing isDone parameter of choosed todo)

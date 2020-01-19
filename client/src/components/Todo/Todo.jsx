@@ -6,6 +6,8 @@ import { CheckBox } from '../CheckBox'
 import TodoSettings from '../TodoSettings/TodoSettings'
 import { todoDragUp, todoDragDown } from '../../actions/displayActions'
 
+import './todo.scss'
+
 const Todo = props => {
   const [showSettings, setShowSettings] = useState(false)
 

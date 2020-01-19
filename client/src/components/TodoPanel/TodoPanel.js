@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react'
 import TodoForm from '../TodoForm/TodoForm'
 import Todo from '../Todo/Todo'
 import { connect } from 'react-redux'
-import { fetchTodosByCategory } from '../../actions/todoActions';
-import TodoDroppable from '../TodoDroppable/TodoDroppable';
+import { fetchTodosByCategory } from '../../actions/todoActions'
+import TodoDroppable from '../TodoDroppable/TodoDroppable'
+
+import './todoPanel.scss'
 
 const TodoPanel = props => {
   const [completed, setCompleted] = useState([])

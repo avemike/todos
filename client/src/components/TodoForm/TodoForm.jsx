@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { createTodo } from '../../actions/todoActions'
 
+import './todoForm.scss'
+
 const TodoForm = props => {
   const [description, setDescription] = useState('')
   
