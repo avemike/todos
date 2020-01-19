@@ -6,7 +6,7 @@ const TodoSettings = props => {
   const handleDelete = () => {
     props.deleteTodo(props._id, props.categoryId)
   }
-  
+
   const settingsFieldClass = props.show ?
     'settings-field settings-field--expand'
     : 'settings-field settings-field--hide'

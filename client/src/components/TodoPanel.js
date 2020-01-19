@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import TodoForm from '../components/TodoForm'
 import Todo from '../components/Todo'
 import { connect } from 'react-redux'
@@ -6,21 +6,34 @@ import { fetchTodosByCategory } from '../actions/todoActions';
 import TodoDroppable from './TodoDroppable';
 
 const TodoPanel = props => {
+  const [completed, setCompleted] = useState([])
+  const [notCompleted, setNotCompleted] = useState([])
 
   useEffect(() => {
     props.fetchTodosByCategory(props.category._id)
-  })
+  }, [])
 
-  const completed = []
-  const notCompleted = []
-  if(props.todos) {
+  useEffect(() => {
+    // Load all todos and update if props.todos changed
+    if(!props.todos) return ;
+
+    setCompleted([])
+    setNotCompleted([])
+
     props.todos.forEach(todo => {
-      if(todo) {
-        if(todo.isDone) completed.push(<Todo todo={todo} categoryId={props.category._id} key={todo._id}/>)
-        else notCompleted.push(<Todo todo={todo} categoryId={props.category._id} key={todo._id}/>)
+      if(todo.isDone) {
+        setCompleted(prev => [...prev, 
+          <Todo todo={todo} categoryId={props.category._id} key={todo._id}/>
+        ])
+      }
+      else {
+        setNotCompleted(prev => [...prev, 
+          <Todo todo={todo} categoryId={props.category._id} key={todo._id}/>
+        ])
       }
     })
-  }
+  }, [props.todos])
+
   return (
     <div className="todo-panel">
       <h2>{props.category.name}</h2>

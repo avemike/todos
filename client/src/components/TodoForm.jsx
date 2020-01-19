@@ -12,7 +12,6 @@ const TodoForm = props => {
       description: description,
       category: props.categoryId
     }
-    // console.log({...todo, categoryId: props.categoryId})
     props.createTodo(todo, props.categoryId)
   }
   
