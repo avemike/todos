@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux';
-import { createCategory, deleteCategory } from '../actions/categoryActions';
+import { createCategory, deleteCategory } from '../../actions/categoryActions';
 
 const CategoryWindow = props => {
   const [categoryName, setCategoryName] = useState('')

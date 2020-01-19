@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import Trianglify from 'trianglify'
 
-import { fetchCategories } from '../actions/categoryActions';
-import { fetchTodos } from '../actions/todoActions';
-import TodoPanel from '../components/TodoPanel'
-import { Header } from '../components/Header'
-import { Navigation } from '../components/Navigation'
+import { fetchCategories } from '../../actions/categoryActions';
+import { fetchTodos } from '../../actions/todoActions';
+import TodoPanel from '../../components/TodoPanel/TodoPanel'
+import { Header } from '../../components/Header/Header'
+import { Navigation } from '../../components/Navigation'
 
 const Home = props => {  
   const [bg, setBg] = useState(null)

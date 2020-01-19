@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { deleteTodo } from '../actions/todoActions'
+import { deleteTodo } from '../../actions/todoActions'
 
 const TodoSettings = props => {
   const handleDelete = () => {

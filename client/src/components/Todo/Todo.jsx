@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 
-import { deleteTodo, updateTodoDescription } from '../actions/todoActions'
-import CheckBox from './CheckBox'
-import TodoSettings from './TodoSettings'
-import { todoDragUp, todoDragDown } from '../actions/displayActions'
+import { deleteTodo, updateTodoDescription } from '../../actions/todoActions'
+import { CheckBox } from '../CheckBox'
+import TodoSettings from '../TodoSettings/TodoSettings'
+import { todoDragUp, todoDragDown } from '../../actions/displayActions'
 
 const Todo = props => {
   const [showSettings, setShowSettings] = useState(false)

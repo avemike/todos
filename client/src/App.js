@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import './App.css'
 import store from './store'
 
-import Home from './views/Home.jsx';
+import Home from './views/Home';
 
 export const App = () =>  {
   return (

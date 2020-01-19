@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import { updateTodoCategory } from '../actions/todoActions';
+import { updateTodoCategory } from '../../actions/todoActions';
 
 const TodoDroppable = props => {
   const onDragOver = event => {
@@ -10,9 +10,8 @@ const TodoDroppable = props => {
   const onDrop = () => {
     props.updateTodoCategory(props.holdingTodo, props.categoryId)
   }
-  
+
   if(!props.holdingTodo) return null
-  
   return (
     <div
       className="todoDroppable"

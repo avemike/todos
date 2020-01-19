@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Checkbox as MaterialCheckbox } from '@material-ui/core'
-import { updateTodoDescription } from '../actions/todoActions'
+import { updateTodoDescription } from '../../actions/todoActions'
 
 const CheckBox = props => {
   const handleClick = () => {
