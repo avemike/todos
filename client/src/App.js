@@ -6,7 +6,7 @@ import store from './store'
 
 import Home from './views/Home';
 
-export default function App() {
+export const App = () =>  {
   return (
     <Provider store={store}>
       <Switch>
