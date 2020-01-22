@@ -1,18 +1,18 @@
 .App {
-  position: absolute;
-}
-
-.main-background {
-  position: absolute;
-  left: var(--nav-width);
-  top: 0;
-  z-index: -10;
-  width: 100%;
+  position: relative;
+  width: 100vw;
   height: 100vh;
+
+  display: grid;
+  grid-template-columns: 4em 1fr;
 }
 
 main {
-  margin-left: calc(var(--nav-width) + 4em);
-  margin-top: 8em;
   display: flex;
+  flex-flow: row wrap;
+  align-items: baseline;
+  min-height: 100%;
+  // max-width: 100%;
+  background: linear-gradient(to top right , #adc, #e31);
+  overflow-y: scroll;
 }

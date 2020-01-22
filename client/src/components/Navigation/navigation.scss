@@ -1,11 +1,4 @@
 nav {
-  position: fixed;
-  left: 0;
-  top: 0;
-
-  height: 100vh;
-  width: var(--nav-width);
-
   background: var(--main-black);
   box-shadow: 2px 0 9px rgba(0,0,0, 0.2);
 }

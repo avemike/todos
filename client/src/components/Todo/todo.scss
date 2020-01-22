@@ -4,9 +4,21 @@
   padding: 0.75em 0.5em;
   margin: 1em 0;
   /* font-size: 18px; */
+
+  display: grid;
+  grid-template-columns: 1fr 6fr 1fr;
+  p {
+    margin: auto 0;
+    display: inline-block;
+  }
+
+  .settings {
+    cursor: pointer;
+    margin: auto;
+    padding: 0 9px;
+    padding-bottom: 0.5em;
+    font-size: 1.5em;
+    font-weight: 600;
+  }
 }
 
-.todo p {
-  margin: 0 8px;
-  display: inline-block;
-}

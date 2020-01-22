@@ -5,7 +5,7 @@ import './header.scss'
 export const Header = () =>{
   return (
     <header>
-      <h1>Todo-app name</h1>
+      <h1>Primary category</h1>
     </header>
   )
 }

@@ -23,9 +23,9 @@ const Todo = props => {
         <p>
           { props.todo.description }
         </p>
-        {/* <div className='settings' onClick={handleClick}>...</div> */}
+        <div className='settings' onClick={handleClick}>...</div>
       </div>
-      {/* <TodoSettings show={showSettings} _id={props.todo._id} categoryId={props.categoryId}/> */}
+      <TodoSettings show={showSettings} _id={props.todo._id} categoryId={props.categoryId}/>
     </li>
   )
 }

@@ -2,6 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { deleteTodo } from '../../actions/todoActions'
 
+import './todoSettings.scss'
+
 const TodoSettings = props => {
   const handleDelete = () => {
     props.deleteTodo(props._id, props.categoryId)

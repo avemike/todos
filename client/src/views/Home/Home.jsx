@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import Trianglify from 'trianglify'
 
 import { fetchCategories } from '../../actions/categoryActions'
 import { fetchTodos } from '../../actions/todoActions'
@@ -16,12 +15,6 @@ const Home = props => {
 
   useEffect(() => {
     props.fetchCategories()
-    
-    const backgroundPattern = Trianglify({
-      width: 1900,
-      height: 1100
-    })
-    setBg( backgroundPattern.png() )
   }, [])
 
   useEffect(() => {
@@ -31,19 +24,17 @@ const Home = props => {
         <TodoPanel 
           key = { category._id }
           category = { category } 
-        />
+        />,
         ])
     ))
   }, [props.categories])
 
   return (
     <div className="App">
-      <div className="main-background">
-        <img src={bg}/>
-      </div>
-      <Header />
       <Navigation/>
       <main>
+        <Header />
+        { Panels }
         { Panels }
       </main>
     </div>
