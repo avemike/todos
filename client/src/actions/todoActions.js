@@ -32,6 +32,8 @@ export const updateTodoDescription = (todoData, categoryId) => dispatch => {
     })})
 }
 export const updateTodoCategory = (todo, newCategoryId) => dispatch => {
+  if(todo.category === newCategoryId) return;
+
   fetch(`http://localhost:5000/api/categories/${newCategoryId}/todos/${todo._id}`, {
     method: 'PUT',
     headers: {

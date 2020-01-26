@@ -18,7 +18,7 @@ main {
   // align-items: baseline;
   // justify-content: safe center;
   display: grid;
-  grid-gap: 5em 2em;
+  grid-gap: 5% 1%;
   @media (min-width: 300px)  { grid-template-columns: 1fr; }
   @media (min-width: 768px)  { grid-template-columns: 1fr 1fr; }
   @media (min-width: 1124px)  { grid-template-columns: 1fr 1fr 1fr; }
