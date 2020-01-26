@@ -10,7 +10,9 @@ export const App = () =>  {
   return (
     <Provider store={store}>
       <Switch>
-        <Route exact path='/' component={Home}/>
+        <Route exact path='/'>
+          <Home />
+        </Route>
       </Switch>
     </Provider>
   )

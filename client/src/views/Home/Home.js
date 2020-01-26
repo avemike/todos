@@ -24,7 +24,7 @@ const Home = props => {
         <TodoPanel 
           key = { category._id }
           category = { category } 
-        />,
+        />
         ])
     ))
   }, [props.categories])
@@ -32,11 +32,13 @@ const Home = props => {
   return (
     <div className="App">
       <Navigation/>
-      <main>
+      <div className="container">
         <Header />
-        { Panels }
-        { Panels }
-      </main>
+        <main>
+          { Panels }
+          { Panels }
+        </main>
+      </div>
     </div>
   )
 }
