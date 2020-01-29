@@ -3,7 +3,7 @@ import {
   TODO_DRAG_DOWN,
 } from './types'
 
-export const todoDragUp = (todo) => dispatch => {
+export const todoDragUp = todo => dispatch => {
   dispatch({
     type: TODO_DRAG_UP,
     payload: { todo }

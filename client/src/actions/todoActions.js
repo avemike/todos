@@ -4,7 +4,8 @@ import {
   DELETE_TODO,
   UPDATE_TODO_CATEGORY,
   UPDATE_TODO_DESCRIPTION,
-  FETCH_TODOS_BY_CATEGORY
+  FETCH_TODOS_BY_CATEGORY,
+  TODO_HOLDING
 } from './types'
 
 export const fetchTodos = () => dispatch => {
@@ -47,7 +48,8 @@ export const updateTodoCategory = (todo, newCategoryId) => dispatch => {
       payload: {...data}
     })
   })
-} 
+}
+
 export const createTodo = (data, categoryId) => dispatch => {
   fetch(`http://localhost:5000/api/categories/${categoryId}/todo`, {
       method: 'POST',

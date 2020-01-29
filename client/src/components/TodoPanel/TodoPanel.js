@@ -37,19 +37,20 @@ const TodoPanel = props => {
   }, [props.todos])
 
   return (
-    <div className="todo-panel-wrapper">
-      <div className="todo-panel">
-        <h2>{props.category.name}</h2>
-        <div className="todo-panel__todos">
-          <TodoForm categoryId = {props.category._id}/>
-          <ul>
-            { notCompleted || null }
-            { completed || null}
-          </ul>
+    <TodoDroppable categoryId = {props.category._id}>
+      <div className="todo-panel-wrapper">
+        <div className="todo-panel">
+          <h2>{props.category.name}</h2>
+          <div className="todo-panel__todos">
+            <TodoForm categoryId = {props.category._id}/>
+            <ul>
+              { notCompleted || null }
+              { completed || null}
+            </ul>
+          </div>
         </div>
-        <TodoDroppable categoryId={props.category._id}/>  
       </div>
-    </div>
+    </TodoDroppable>
   )
 }
 
