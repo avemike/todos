@@ -11,19 +11,10 @@
     background: linear-gradient(to top right , #adc, #e31);
     overflow-y: scroll;
 }
-
 main {
-  // display: flex;
-  // flex-flow: row wrap;
-  // align-items: baseline;
-  // justify-content: safe center;
+  margin: 2em;
   display: grid;
-  grid-gap: 5% 1%;
-  @media (min-width: 300px)  { grid-template-columns: 1fr; }
-  @media (min-width: 768px)  { grid-template-columns: 1fr 1fr; }
-  @media (min-width: 1124px)  { grid-template-columns: 1fr 1fr 1fr; }
-  @media (min-width: 1400px)  { grid-template-columns: 1fr 1fr 1fr 1fr; }
-
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  grid-gap: 2em;
   min-height: 100%;
-  // max-width: 100%;
 }

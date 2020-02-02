@@ -34,10 +34,13 @@ const Home = props => {
       <Navigation/>
       <div className="container">
         <Header />
-        <main>
-          { Panels }
-          { Panels }
-        </main>
+        <div className="main-wrapper">
+          <main>
+            { Panels }
+            { Panels }
+            { Panels }
+          </main>
+        </div>
       </div>
     </div>
   )

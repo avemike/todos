@@ -19,8 +19,8 @@ const TodoForm = props => {
   
   return (
     <form onSubmit = { handleSubmit }>
-      <input name="description" onChange={e => setDescription(e.target.value)} placeholder="Read a newspaper..."></input>
       <button className='add' type='submit'>Add</button>
+      <input name="description" onChange={e => setDescription(e.target.value)} placeholder="Read a newspaper..."></input>
     </form>
   )
 }
