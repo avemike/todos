@@ -1,3 +1,5 @@
+@import '../../shared/vars.scss';
+
 .App {
   position: relative;
   width: 100vw;
@@ -8,8 +10,8 @@
 }
 
 .container {
-    background: linear-gradient(to top right , #adc, #e31);
-    overflow-y: scroll;
+  background: linear-gradient(-45deg, $third-color, $second-color);
+  overflow-y: scroll;
 }
 main {
   margin: 2em;

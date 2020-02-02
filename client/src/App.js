@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import { Provider } from 'react-redux'
-import './App.css'
+import './App.scss'
 import store from './store'
 
 import Home from './views/Home';

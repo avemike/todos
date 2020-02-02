@@ -1,3 +1,5 @@
+@import '../../shared/vars.scss';
+
 .todo-panel {
   background-color: #fff;
   border-radius: 14px;
@@ -7,6 +9,7 @@
 }
 .todo-panel h2 {
   margin: 0 0 1.25em 0;
+  color: $sixth-color;
 }
 
 .todo-panel ul {

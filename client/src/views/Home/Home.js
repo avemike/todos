@@ -37,8 +37,6 @@ const Home = props => {
         <div className="main-wrapper">
           <main>
             { Panels }
-            { Panels }
-            { Panels }
           </main>
         </div>
       </div>

@@ -1,4 +1,6 @@
+@import '../../shared/vars.scss';
+
 nav {
-  background: var(--main-black);
+  background: $first-color;
   box-shadow: 2px 0 9px rgba(0,0,0, 0.2);
 }
