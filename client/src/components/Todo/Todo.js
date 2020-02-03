@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
+import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 import { deleteTodo, updateTodoDescription } from '../../actions/todoActions'
 import { CheckBox } from '../CheckBox'
@@ -19,11 +20,17 @@ const Todo = props => {
   return (
     <li>
       <div className="todo" draggable="true" onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
-        <CheckBox _id={props.todo._id} categoryId={props.categoryId} isDone={props.todo.isDone}/>
-        <p>
-          { props.todo.description }
-        </p>
-        <div className='settings' onClick={handleClick}>...</div>
+        <section className="todo-section">
+          <CheckBox _id={props.todo._id} categoryId={props.categoryId} isDone={props.todo.isDone}/>
+        </section>
+        <section className="todo-section">
+          <p>
+            { props.todo.description }
+          </p>
+        </section>
+        <section className="todo-section">
+          <MoreVertIcon className='settings' onClick={handleClick}/>
+        </section>
       </div>
       <TodoSettings show={showSettings} _id={props.todo._id} categoryId={props.categoryId}/>
     </li>

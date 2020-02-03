@@ -21,10 +21,11 @@ const TodoForm = props => {
   return (
     <form onSubmit = { handleSubmit }>
       {/* <button className='add' type='submit'>Add</button> */}
-      <button className='add' type='submit'>
+      <div className="add-icon-wrapper">
         <AddIcon/>
-      </button>
-      <input name="description" onChange={e => setDescription(e.target.value)} placeholder="Read a newspaper..."></input>
+      </div>
+
+      <input name="description" onChange={e => setDescription(e.target.value)} placeholder="Type your task"></input>
     </form>
   )
 }

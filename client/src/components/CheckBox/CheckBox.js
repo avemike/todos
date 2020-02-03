@@ -18,8 +18,8 @@ const CheckBox = props => {
   return (
     <div className='checkbox-wrapper' onClick={handleClick}>
       {props.isDone ? 
-        <CheckBoxIcon/> :
-        <CheckBoxOutlineBlankIcon/>
+        <CheckBoxIcon className="checked"/> :
+        <CheckBoxOutlineBlankIcon className="unchecked"/>
       }
     </div>
   )
