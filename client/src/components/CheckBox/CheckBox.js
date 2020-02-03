@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Checkbox as MaterialCheckbox } from '@material-ui/core'
+import CheckBoxIcon from '@material-ui/icons/CheckBox'
+import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank'
 import { updateTodoDescription } from '../../actions/todoActions'
 
 import './checkBox.scss'
@@ -15,11 +16,11 @@ const CheckBox = props => {
   }
 
   return (
-    <div className='checkbox-wrapper'>
-      <MaterialCheckbox 
-        checked = {props.isDone}
-        onChange = {handleClick}
-      />
+    <div className='checkbox-wrapper' onClick={handleClick}>
+      {props.isDone ? 
+        <CheckBoxIcon/> :
+        <CheckBoxOutlineBlankIcon/>
+      }
     </div>
   )
 }
