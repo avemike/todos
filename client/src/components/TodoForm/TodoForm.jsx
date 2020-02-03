@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { createTodo } from '../../actions/todoActions'
+import AddIcon from '@material-ui/icons/Add';
 
+import { createTodo } from '../../actions/todoActions'
 import './todoForm.scss'
 
 const TodoForm = props => {
@@ -19,7 +20,10 @@ const TodoForm = props => {
   
   return (
     <form onSubmit = { handleSubmit }>
-      <button className='add' type='submit'>Add</button>
+      {/* <button className='add' type='submit'>Add</button> */}
+      <button className='add' type='submit'>
+        <AddIcon/>
+      </button>
       <input name="description" onChange={e => setDescription(e.target.value)} placeholder="Read a newspaper..."></input>
     </form>
   )

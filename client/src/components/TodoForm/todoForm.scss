@@ -1,6 +1,26 @@
+@import '../../shared/vars.scss';
+
 input[name='description'] {
   background: transparent;
   border: none;
   font-size: 1em;
   padding: 4px;
+}
+form {
+  display: flex;
+  color: $fourth-color;
+  button.add {
+    padding: 0;
+    margin: 0;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    background: none;
+  
+    svg {
+      width: 1.5em;
+      height: auto;
+      color: $fourth-color;
+    }
+  }
 }
