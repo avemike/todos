@@ -2,12 +2,13 @@
   cursor: pointer;
 
   display: grid;
-  grid-template-columns: 1fr 6fr 1fr;
+  grid-template-columns: 1fr 10fr 1fr;
   grid-gap: 1em;
   p {
     margin: auto 0;
     display: inline-block;
 
+    font-size: 0.9em;
     word-break: normal;
     hyphens: auto;
   }

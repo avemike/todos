@@ -40,8 +40,9 @@ const TodoPanel = props => {
     <TodoDroppable categoryId = {props.category._id}>
       <div className="todo-panel-wrapper">
         <div className="todo-panel">
-          <section className="panel-section">
+          <section className="panel-section panel-header">
             <h2>{props.category.name}</h2>
+            <p>Last updated: 16 July</p>
           </section>
           <section className="panel-section todo-form">
             <TodoForm categoryId = {props.category._id}/>

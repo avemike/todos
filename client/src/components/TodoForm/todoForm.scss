@@ -2,24 +2,27 @@
 
 form {
   display: grid;
-  grid-template-columns: 1fr 7fr;
+  grid-template-columns: 1fr 11fr;
   grid-gap: 1em;
   color: $fourth-color;
   input[name='description'] {
     background: transparent;
-    padding: 4px;
+    padding: 4px 0;
     border: none;
 
-    font-size: 1.15em;
+    font-size: 1.05em;
     font-family: 'Open Sans';
-
+    &::placeholder {
+      color: $fourth-color;
+    }
     &:focus {
       outline-width: 0;
     }
   }
   .add-icon-wrapper {
-    width: 2em;
-    height: 2em;
+    align-self: center;
+    width: 1.7em;
+    height: 1.7em;
     transform: scale(1.25);
     svg {
       width: 100%;

@@ -14,9 +14,9 @@
   overflow-y: scroll;
 }
 main {
-  margin: 2em;
+  margin: 5em 7em;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  grid-gap: 3em;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-gap: 4em;
   min-height: 100%;
 }

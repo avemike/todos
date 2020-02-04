@@ -33,7 +33,7 @@ const Home = props => {
     <div className="App">
       <Navigation/>
       <div className="container">
-        <Header />
+        {/* <Header /> */}
         <div className="main-wrapper">
           <main>
             { Panels }
