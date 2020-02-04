@@ -5,10 +5,10 @@
   
   display: flex;
   justify-content: center;
-
   .todo-panel {
     background-color: #fff;
     border-radius: 14px;
+    box-shadow: 0 0 4px rgba(black, .2);
     // padding: 1.8em 2.5em;
     width: 100%;
     section.panel-section {
@@ -32,7 +32,44 @@
       font-size: 34px;
       color: $sixth-color;
     }
-    
+    .separator {
+      cursor: pointer;
+      position: relative;
+      width: fit-content;
+      font-size: 0.75em;
+      margin: 0 auto;
+      color: $fourth-color;
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+      svg {
+        margin-top: -6px;
+      }
+      &:after {
+        content: '';
+        position: absolute;
+        left: calc(-200% - 2em);
+        top: 50%;
+        
+        width: 200%;
+        height: 1px;
+        border-top: 1px solid $fourth-color;
+
+        pointer-events: none;
+      }
+      &:before {
+        content: '';
+        position: absolute;
+        right: calc(-200% - 2em);
+        top: 50%;
+
+        width: 200%;
+        height: 1px;
+        border-top: 1px solid $fourth-color;
+
+        pointer-events: none;
+      }
+    }
     ul {
       list-style: none;
       padding: 0;

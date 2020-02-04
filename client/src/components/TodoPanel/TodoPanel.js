@@ -5,11 +5,15 @@ import { connect } from 'react-redux'
 import { fetchTodosByCategory } from '../../actions/todoActions'
 import TodoDroppable from '../TodoDroppable/TodoDroppable'
 
+import ExpandLessIcon from '@material-ui/icons/ExpandLess';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
 import './todoPanel.scss'
 
 const TodoPanel = props => {
   const [completed, setCompleted] = useState([])
   const [notCompleted, setNotCompleted] = useState([])
+  const [isDoneTodosExpanded, setIsDoneTodosExpanded] = useState(false)
 
   useEffect(() => {
     props.fetchTodosByCategory(props.category._id)
@@ -50,7 +54,16 @@ const TodoPanel = props => {
           <section className="panel-section">
             <ul>
               { notCompleted || null }
-              { completed || null}
+            </ul>
+            <div className="separator" onClick={() => setIsDoneTodosExpanded(!isDoneTodosExpanded)}>
+              Done
+              {isDoneTodosExpanded?
+              <ExpandLessIcon/>
+              :
+              <ExpandMoreIcon/>}
+            </div>
+            <ul>
+              { isDoneTodosExpanded && (completed || null)}
             </ul>
           </section>
         </div>
