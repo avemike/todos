@@ -4,13 +4,10 @@ import { connect } from 'react-redux'
 import { fetchCategories } from '../../actions/categoryActions'
 import { fetchTodos } from '../../actions/todoActions'
 import TodoPanel from '../../components/TodoPanel/TodoPanel'
-import { Header } from '../../components/Header/Header'
-import { Navigation } from '../../components/Navigation'
 
 import './home.scss'
 
 const Home = props => {  
-  const [bg, setBg] = useState(null)
   const [Panels, setPanels] = useState([])
 
   useEffect(() => {
@@ -31,9 +28,7 @@ const Home = props => {
 
   return (
     <div className="App">
-      <Navigation/>
       <div className="container">
-        {/* <Header /> */}
         <div className="main-wrapper">
           <main>
             { Panels }
