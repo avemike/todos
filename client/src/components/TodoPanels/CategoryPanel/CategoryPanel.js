@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import TodoForm from '../TodoForm/TodoForm'
-import Todo from '../Todo/Todo'
+import TodoForm from '../../TodoForm/TodoForm'
+import Todo from '../../Todo/Todo'
 import { connect } from 'react-redux'
-import { fetchTodosByCategory } from '../../actions/todoActions'
-import TodoDroppable from '../TodoDroppable/TodoDroppable'
+import { fetchTodosByCategory } from '../../../actions/todoActions'
+import TodoDroppable from '../../TodoDroppable/TodoDroppable'
 
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-import './todoPanel.scss'
+import '../panels.scss'
 
-const TodoPanel = props => {
+const CategoryPanel = props => {
   const [completed, setCompleted] = useState([])
   const [notCompleted, setNotCompleted] = useState([])
   const [isDoneTodosExpanded, setIsDoneTodosExpanded] = useState(false)
@@ -81,4 +81,4 @@ const mapStateToProps = (state, props) => {
   return null
 }
 
-export default connect(mapStateToProps, { fetchTodosByCategory })(TodoPanel)
+export default connect(mapStateToProps, { fetchTodosByCategory })(CategoryPanel)

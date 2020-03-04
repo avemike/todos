@@ -3,8 +3,9 @@
 .todo-panel-wrapper {
   flex: 0 1 0px;
   
-  display: flex;
-  justify-content: center;
+  &.create-category {
+    opacity: 0.65;
+  }
   .todo-panel {
     background-color: #fff;
     border-radius: 14px;

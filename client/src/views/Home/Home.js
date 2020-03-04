@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 
 import { fetchCategories } from '../../actions/categoryActions'
 import { fetchTodos } from '../../actions/todoActions'
-import TodoPanel from '../../components/TodoPanel/TodoPanel'
+import { AddCategoryPanel } from '../../components/TodoPanels/AddCategoryPanel'
+import TodoPanel from '../../components/TodoPanels/CategoryPanel/CategoryPanel'
 
 import './home.scss'
 
@@ -32,6 +33,7 @@ const Home = props => {
         <div className="main-wrapper">
           <main>
             { Panels }
+            <AddCategoryPanel/>
           </main>
         </div>
       </div>
