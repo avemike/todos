@@ -16,6 +16,7 @@ const Home = props => {
   }, [])
 
   useEffect(() => {
+    setPanels('')
     props.categories.forEach( category => (
       setPanels(panels => [
         ...panels,
