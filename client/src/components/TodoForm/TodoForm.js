@@ -9,23 +9,26 @@ import './todoForm.scss'
 const TodoForm = props => {
   const [description, setDescription] = useState('')
   
-  const handleSubmit = e => {
-    e.preventDefault()
+  const handleChange = event => setDescription(event.target.value)
+  const handleSubmit = event => {
+    event.preventDefault()
+
     const todo = {
       description: description,
       category: props.categoryId
     }
     props.createTodo(todo, props.categoryId)
+
+    setDescription('')
   }
   
   return (
     <form onSubmit = { handleSubmit }>
-      {/* <button className='add' type='submit'>Add</button> */}
       <div className="add-icon-wrapper">
         <AddIcon/>
       </div>
 
-      <input name="description" onChange={e => setDescription(e.target.value)} placeholder="Type your task"></input>
+      <input name="description" value={ description } onChange={ handleChange } placeholder="Type your task"></input>
     </form>
   )
 }

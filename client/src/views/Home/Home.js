@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import { fetchCategories } from '../../actions/categoryActions'
 import { fetchTodos } from '../../actions/todoActions'
-import { AddCategoryPanel } from '../../components/TodoPanels/AddCategoryPanel'
+import AddCategoryPanel from '../../components/TodoPanels/AddCategoryPanel/AddCategoryPanel'
 import TodoPanel from '../../components/TodoPanels/CategoryPanel/CategoryPanel'
 
 import './home.scss'
