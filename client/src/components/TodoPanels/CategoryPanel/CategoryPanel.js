@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
+import { connect } from 'react-redux'
+
 import TodoForm from '../../TodoForm/TodoForm'
 import Todo from '../../Todo/Todo'
-import { connect } from 'react-redux'
 import { fetchTodosByCategory } from '../../../actions/todoActions'
 import TodoDroppable from '../../TodoDroppable/TodoDroppable'
+import { Header } from './Header/Header'
 
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -41,15 +43,12 @@ const CategoryPanel = props => {
   }, [props.todos])
 
   return (
-    <TodoDroppable categoryId = {props.category._id}>
+    <TodoDroppable categoryId = { props.category._id }>
       <div className="todo-panel-wrapper">
         <div className="todo-panel">
-          <section className="panel-section panel-header">
-            <h2>{props.category.name}</h2>
-            <p>Last updated: 16 July</p>
-          </section>
+          <Header category = { props.category }/>
           <section className="panel-section todo-form">
-            <TodoForm categoryId = {props.category._id}/>
+            <TodoForm categoryId = { props.category._id }/>
           </section>
           <section className="panel-section">
             <ul>
