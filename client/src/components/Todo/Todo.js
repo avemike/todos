@@ -24,7 +24,7 @@ const Todo = props => {
           <CheckBox _id={props.todo._id} categoryId={props.categoryId} isDone={props.todo.isDone}/>
         </section>
         <section className="todo-section">
-          <p>
+          <p className={props.todo.isDone ? 'done' : 'undone'}>
             { props.todo.description }
           </p>
         </section>

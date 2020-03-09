@@ -17,7 +17,6 @@ const TodoSettings = props => {
     <div className={settingsFieldClass}>
       <ul>
         <li onClick={handleDelete.bind(this)}>Usuń</li>
-        <li>Przenieś</li>
       </ul>
     </div>
   ) 

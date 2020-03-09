@@ -1,0 +1,38 @@
+@import '../../../../../shared/vars.scss';
+
+.category-options-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform: translateX(8px);
+
+  .category-options {
+    position: absolute;
+    left: -1.5em;
+
+    width: 100%;
+    padding: 0.5em 1.5em;
+    box-sizing: content-box;
+    background-color: $first-color;
+    border-radius: 4px;
+    svg {
+      $width: 30%;
+      $height: 30%;
+
+      width: $width;
+      height: $height;
+
+      position: absolute;
+      left: 50% - $width/2;
+      top: -$height;
+      fill: $first-color;
+    }
+
+    p {
+      margin: 0;
+      color: $sixth-color;
+      font-size: 0.75em;
+      cursor: pointer;
+    }
+  }
+}

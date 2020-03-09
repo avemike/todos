@@ -1,4 +1,12 @@
 .settings-field {
+  ul {
+    padding: 0;
+    list-style: none;
+    li {
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+  }
   &.settings-field--hide {
     display: none;
   }

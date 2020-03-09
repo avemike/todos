@@ -51,7 +51,7 @@ const CategoryPanel = props => {
             <TodoForm categoryId = { props.category._id }/>
           </section>
           <section className="panel-section">
-            <ul>
+            <ul className="todo-list todo-list-not-completed">
               { notCompleted || null }
             </ul>
             <div className="separator" onClick={() => setIsDoneTodosExpanded(!isDoneTodosExpanded)}>
@@ -61,7 +61,7 @@ const CategoryPanel = props => {
               :
               <ExpandMoreIcon/>}
             </div>
-            <ul>
+            <ul className="todo-list todo-list-completed">
               { isDoneTodosExpanded && (completed || null)}
             </ul>
           </section>

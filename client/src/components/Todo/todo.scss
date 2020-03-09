@@ -1,3 +1,5 @@
+@import '../../shared/vars.scss';
+
 .todo {
   cursor: pointer;
 
@@ -11,10 +13,14 @@
     font-size: 0.9em;
     word-break: normal;
     hyphens: auto;
+    &.done {
+      text-decoration: line-through;
+    }
   }
 
   .settings {
     cursor: pointer;
+    color: $dark-color;
   }
   section.todo-section {
     &:nth-child(1) {
