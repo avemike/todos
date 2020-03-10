@@ -2,10 +2,11 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
-import { deleteTodo, updateTodoDescription } from '../../actions/todoActions'
-import { CheckBox } from '../CheckBox'
-import TodoSettings from '../TodoSettings/TodoSettings'
-import { todoDragUp, todoDragDown } from '../../actions/displayActions'
+import { deleteTodo, updateTodoDescription } from '../../../../../../actions/todoActions'
+import { todoDragUp, todoDragDown } from '../../../../../../actions/displayActions'
+
+import CheckBox from './CheckBox/CheckBox'
+import TodoSettings from './TodoSettings/TodoSettings'
 
 import './todo.scss'
 

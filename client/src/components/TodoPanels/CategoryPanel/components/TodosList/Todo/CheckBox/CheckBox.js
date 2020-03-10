@@ -1,8 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import CheckBoxIcon from '@material-ui/icons/CheckBox'
-import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank'
-import { updateTodoDescription } from '../../actions/todoActions'
+import {CheckBox as CheckBoxIcon, CheckBoxOutlineBlank as CheckBoxOutlineBlankIcon } from '@material-ui/icons'
+import { updateTodoDescription } from '../../../../../../../actions/todoActions'
 
 import './checkBox.scss'
 

@@ -1,83 +1,24 @@
-import React, { useEffect, useState } from 'react'
-import { connect } from 'react-redux'
+import React from 'react'
 
-import TodoForm from '../../TodoForm/TodoForm'
-import Todo from '../../Todo/Todo'
-import { fetchTodosByCategory } from '../../../actions/todoActions'
+import TodoForm from './components/TodoForm/TodoForm'
 import TodoDroppable from '../../TodoDroppable/TodoDroppable'
-import { Header } from './Header/Header'
-
-import ExpandLessIcon from '@material-ui/icons/ExpandLess';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { Header } from './components/Header/Header'
+import TodosList from './components/TodosList/TodosList'
 
 import '../panels.scss'
 
 const CategoryPanel = props => {
-  const [completed, setCompleted] = useState([])
-  const [notCompleted, setNotCompleted] = useState([])
-  const [isDoneTodosExpanded, setIsDoneTodosExpanded] = useState(false)
-
-  useEffect(() => {
-    props.fetchTodosByCategory(props.category._id)
-  }, [])
-
-  useEffect(() => {
-    // Load all todos and update if props.todos changed
-    if(!props.todos) return ;
-
-    setCompleted([])
-    setNotCompleted([])
-
-    props.todos.forEach(todo => {
-      if(todo.isDone) {
-        setCompleted(prev => [...prev, 
-          <Todo todo={todo} categoryId={props.category._id} key={todo._id}/>
-        ])
-      }
-      else {
-        setNotCompleted(prev => [...prev, 
-          <Todo todo={todo} categoryId={props.category._id} key={todo._id}/>
-        ])
-      }
-    })
-  }, [props.todos])
-
   return (
     <TodoDroppable categoryId = { props.category._id }>
       <div className="todo-panel-wrapper">
         <div className="todo-panel">
           <Header category = { props.category }/>
-          <section className="panel-section todo-form">
-            <TodoForm categoryId = { props.category._id }/>
-          </section>
-          <section className="panel-section">
-            <ul className="todo-list todo-list-not-completed">
-              { notCompleted || null }
-            </ul>
-            <div className="separator" onClick={() => setIsDoneTodosExpanded(!isDoneTodosExpanded)}>
-              Done
-              {isDoneTodosExpanded?
-              <ExpandLessIcon/>
-              :
-              <ExpandMoreIcon/>}
-            </div>
-            <ul className="todo-list todo-list-completed">
-              { isDoneTodosExpanded && (completed || null)}
-            </ul>
-          </section>
+          <TodoForm categoryId = { props.category._id }/>
+          <TodosList category = { props.category }/>
         </div>
       </div>
     </TodoDroppable>
   )
 }
 
-const mapStateToProps = (state, props) => {
-  if(props.category) {
-    return {
-      todos: state.todos[props.category._id]
-    }
-  }
-  return null
-}
-
-export default connect(mapStateToProps, { fetchTodosByCategory })(CategoryPanel)
+export default CategoryPanel

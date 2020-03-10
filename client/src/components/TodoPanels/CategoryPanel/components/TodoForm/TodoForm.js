@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import AddIcon from '@material-ui/icons/Add';
 
-import { createTodo } from '../../actions/todoActions'
+import { createTodo } from '../../../../../actions/todoActions'
 import './todoForm.scss'
 
 const TodoForm = props => {
@@ -23,13 +23,15 @@ const TodoForm = props => {
   }
   
   return (
-    <form onSubmit = { handleSubmit }>
-      <div className="add-icon-wrapper">
-        <AddIcon/>
-      </div>
+    <section className="panel-section todo-form">
+      <form onSubmit = { handleSubmit }>
+        <div className="add-icon-wrapper">
+          <AddIcon/>
+        </div>
 
-      <input name="description" value={ description } onChange={ handleChange } placeholder="Type your task"></input>
-    </form>
+        <input name="description" value={ description } onChange={ handleChange } placeholder="Type your task"></input>
+      </form>
+    </section>
   )
 }
 

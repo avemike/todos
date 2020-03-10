@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { deleteCategory } from '../../../../../actions/categoryActions'
+import { deleteCategory } from '../../../../../../actions/categoryActions'
 import './options.scss'
 
 const Options = props => {
