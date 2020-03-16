@@ -5,7 +5,7 @@ import Options from './Options/Options'
 
 export const Header = props => {
   const [isMenuShown, setIsMenuShown] = useState(false)
-  
+
   const handleClick = () => setIsMenuShown(!isMenuShown)
 
   return (
@@ -15,7 +15,11 @@ export const Header = props => {
       <button onClick={handleClick}>
         <MenuIcon />
       </button>
-      { isMenuShown ? <Options category = {props.category} /> : null }
+        { isMenuShown ? 
+          <Options 
+            hideMenu = {() => setIsMenuShown(false)}
+            category = {props.category}
+          /> : null }
     </section>
   )
 }

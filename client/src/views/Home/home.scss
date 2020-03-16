@@ -8,6 +8,7 @@
 .container {
   background: linear-gradient(-45deg, $third-color, $second-color);
   overflow-y: scroll;
+  min-height: 100vh;
 }
 
 main {

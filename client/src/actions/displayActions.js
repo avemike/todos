@@ -1,6 +1,6 @@
 import {
   TODO_DRAG_UP,
-  TODO_DRAG_DOWN,
+  TODO_DRAG_DOWN
 } from './types'
 
 export const todoDragUp = todo => dispatch => {
