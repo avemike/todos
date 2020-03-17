@@ -6,9 +6,13 @@
 }
 
 .container {
-  background: linear-gradient(-45deg, $third-color, $second-color);
+  // background: linear-gradient(-45deg, $third-color, $second-color);
   overflow-y: scroll;
   min-height: 100vh;
+  background-image: url('/background.png');
+  background-repeat: repeat-y;
+  background-position-y: -30vh;
+  background-size: 100%;
 }
 
 main {
