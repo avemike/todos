@@ -1,10 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-const Index = () => {
-  return (
-    <div className="container">
-      <h1>Welcome to shit!!!</h1>
-    </div>
-  );
-};
-ReactDOM.render(<Index />, document.getElementById('root'));
+import React from 'react'
+import { render } from 'react-dom'
+import { BrowserRouter } from 'react-router-dom'
+
+import { App } from './App'
+
+render((
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+), document.getElementById('root'))
