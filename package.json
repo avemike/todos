@@ -36,7 +36,9 @@
   },
   "scripts": {
     "start": "node server/index.js",
-    "dev": "webpack --mode development && node server/index.js",
+    "dev:front": "webpack --watch --mode development",
+    "dev:wds": "webpack-dev-server",
+    "dev:back": "nodemon server/index.js",
     "build": "webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1"
   }

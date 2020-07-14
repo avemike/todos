@@ -6,11 +6,22 @@ const htmlPlugin = new HtmlWebPackPlugin({
 });
 module.exports = {
   entry: "./src/index.js",
+  mode: 'development',
   output: { // NEW
     path: path.join(__dirname, 'dist'),
     filename: "[name].js"
   }, // NEW Ends
+  
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    port: 9000
+  },
+  
   plugins: [htmlPlugin],
+  watch: {
+    watch: true
+  },
   module: {
     rules: [
       {
