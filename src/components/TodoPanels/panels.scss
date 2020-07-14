@@ -8,7 +8,7 @@
   }
   .todo-panel {
     background-color: #fff;
-    border-radius: 14px;
+    border-radius: 3px;
     box-shadow: 0 0 4px rgba(black, .2);
     
     width: 100%;
@@ -16,8 +16,8 @@
       display: block;
     }
     .panel-section {
-            width: 100%;
-      padding: 1em 2.5em;
+      width: 100%;
+      padding: 0.75em 2em;
       &.todo-form {
         border-top: 2px solid $fourth-color;
         border-bottom: 2px solid $fourth-color;
@@ -28,7 +28,7 @@
       margin: 0;
       font-family: 'Source Sans Pro';
       color: $sixth-color;
-      font-size: 2.1rem;
+      font-size: 1.3rem;
     }
     input.input-category-name {
       max-width: 100%;
@@ -38,7 +38,7 @@
       cursor: pointer;
       position: relative;
       width: fit-content;
-      font-size: 0.75em;
+      font-size: 0.5em;
       margin: 0 auto;
       color: $fourth-color;
       display: flex;
